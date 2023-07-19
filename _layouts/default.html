@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+
+
   
   <head>
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
@@ -7,8 +9,13 @@
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
     {% include analytics.html %}
+    
+    <link rel="stylesheet" href="styles.css">
   </head>
- 
+
+  
+
+  
   <body>
     <div class="wrapper-masthead">
       <div class="container">
@@ -19,7 +26,6 @@
             <h1 class="site-name"><a href="{{ site.baseurl }}/">{{ site.name }}</a></h1>
             <p class="site-description">{{ site.description }}</p>
           </div>
-
           <nav>
             <a href="{{ site.baseurl }}/">Blog</a>
             <a href="{{ site.baseurl }}/about">About</a>
@@ -32,6 +38,8 @@
       {{ content }}
     </div>
 
+    <a href="#" class="back-to-top">Kembali ke atas</a>
+    
     <div class="wrapper-footer">
       <div class="container">
         <footer class="footer">
@@ -39,10 +47,8 @@
         </footer>
       </div>
     </div>
-
     
   </body>
-
 
 
   
