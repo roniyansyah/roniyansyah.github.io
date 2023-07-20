@@ -64,7 +64,10 @@ body {
 
 
 
-
+.container-footer {
+  display: flex;
+  justify-content: center;
+}
 
 
 /* Reset default link styles */
@@ -85,7 +88,7 @@ body {
   transition: background-color 0.2s;
 }
 .social-button i {
-  margin-right: 5px;
+  margin-right: 2px;
 }
 /* Hover effect */
 .social-button:hover {
