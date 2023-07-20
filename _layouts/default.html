@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-
-  
+ 
   <head>
     <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
     {% include meta.html %}
@@ -10,9 +8,6 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
   </head>
-
-  
-
   
   <body>
     <div class="wrapper-masthead">
@@ -32,9 +27,7 @@
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
+                </div>
             <ul class="menu">
                 <li><a href="#">Resume</a></li>
                 <li><a href="#">Business</a></li>
@@ -46,12 +39,10 @@
         </header>
       </div>
     </div>
-
+    
     <div id="main" role="main" class="container">
       {{ content }}
-    </div>
-
-    
+    </div> 
        
     <div class="wrapper-footer">
       <div class="bar-footer"></div>
@@ -63,7 +54,5 @@
     </div>
     
   </body>
-
-
   
 </html>
