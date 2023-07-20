@@ -63,16 +63,10 @@ body {
 
 
 
-.wrapper-footer {
-  display: flex;
-}
-
 .container-footer {
   display: flex;
   justify-content: center;
 }
-
-
 /* Reset default link styles */
 .social-buttons {
   list-style: none;
