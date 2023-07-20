@@ -2,6 +2,8 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+
 .navbar {
     background-color: #333;
     color: #fff;
@@ -62,14 +64,20 @@ body {
 }
 
 
+
+.container-main {
+    margin: 0;
+}
+
+
+
 .bar-footer {
     height: 3px;
-    background-color: #fff;
+    background-color: black;
     margin: 5px 0;
     padding-bottom: 10px;
     padding-top: 10px;
 }
-
 .container-footer {
   display: flex;
   justify-content: center;
