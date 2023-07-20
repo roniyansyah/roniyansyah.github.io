@@ -2,7 +2,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
 .navbar {
     background-color: #333;
     color: #fff;
@@ -10,58 +9,47 @@ body {
     align-items: center;
     padding: 10px;
 }
-
 .logo {
     flex: 1;
     padding: 0 20px;
 }
-
 .logo img {
     max-width: 100px;
     max-height: 100px;
 }
-
 .menu-icon {
     cursor: pointer;
     display: none;
 }
-
 .bar {
     width: 25px;
     height: 3px;
     background-color: #fff;
     margin: 5px 0;
 }
-
 .menu {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
-
 .menu li {
     padding: 0 15px;
 }
-
 .menu li a {
     color: #fff;
     text-decoration: none;
 }
-
 .content {
     padding: 20px;
 }
-
 @media (max-width: 768px) {
     .menu {
         display: none;
     }
-
     .menu-icon {
         display: block;
     }
-
     .menu.active {
         display: flex;
         flex-direction: column;
@@ -71,4 +59,48 @@ body {
         background-color: #333;
         padding: 10px;
     }
+}
+
+
+
+
+
+
+
+/* Reset default link styles */
+.social-buttons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+/* Style for each social button */
+.social-button {
+  display: inline-block;
+  color: #fff;
+  background-color: #333;
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+.social-button i {
+  margin-right: 5px;
+}
+/* Hover effect */
+.social-button:hover {
+  background-color: #555;
+}
+/* Custom colors for different social buttons */
+.social-button.instagram {
+  background-color: #e4405f;
+}
+.social-button.youtube {
+  background-color: #c4302b;
+}
+.social-button.linkedin {
+  background-color: #0077b5;
+}
+.social-button.whatsapp {
+  background-color: #25d366;
 }
