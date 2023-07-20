@@ -73,9 +73,10 @@ body {
 
 
 .bar-footer {
-    height: 3px;
+    height: 1px;
+    width: 50%;
     background-color: black;
-    margin: 5px 0;
+    margin: 2px 0;
     padding-bottom: 10px;
     padding-top: 10px;
 }
