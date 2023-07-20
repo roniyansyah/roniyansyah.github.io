@@ -62,10 +62,18 @@ body {
 }
 
 
+.bar-footer {
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 
 .container-footer {
   display: flex;
   justify-content: center;
+    padding-top: 10px;
 }
 /* Reset default link styles */
 .social-buttons {
