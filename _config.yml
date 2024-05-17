@@ -1,72 +1,61 @@
-# Site settings
-title: Roniyansyah
-email: roniyronron@gmail.com
-url: https://roniyansyah.github.io/
-description: "a people from South Borneo"
-keywords: "Science, Technology"
-skills: "Web Developer - Graphic Artist - User Experience Designer"
-meta_author: LastName FirstName
+# config.yml
 
-# Google webmaster tools
-google_verify:
+# Nama situs atau blog Anda
+name: "Roniyansyah"
 
-# https://ssl.bing.com/webmaster/configure/verify/ownership Option 2 content= goes here
-bing_verify:
+# Deskripsi situs Anda
+description: "urang Banjar bacaramin kitab"
 
-# Contact form:
-# - static : pass through formspree.io to validate email sending
-# - disqus : replace contact form by disqus thread
-# - comment the line below if you want to stick with the default PHP contact form
-contact: static
+# URL situs Anda
+url: "https://roniyansyah.github.io/"
 
-# If you use disqus you need disqus shortname
-# https://help.disqus.com/customer/portal/articles/466208
-disqus_shortname: myshortname
+# Base URL (jika situs Anda berada di subdirektori, misalnya /blog)
+baseurl: ""
 
-# Color settings (hex-codes without the leading hash-tag)
-color:
-  primary: 18bc9c #80B3FF
-  primary-rgb: "24,288,156" #"128,179,255"
-  secondary: 2c3e50 #FD6E8A
-  secondary-dark: 233140 #A2122F
+# Konfigurasi SEO
+title: "Roniyansyah"
+twitter_username: "username_twitter"
+github_username: "roniyansyah"
 
-# Footer settings
-footer:
-  copyright: Dr. Henry Jekyll
-  location: Location
-  social: Around the Web
-  credits: Credits
+# Email (jika ingin menampilkan di situs)
+email: "roniyronron@gmail.com"
 
-# Social networks usernames (many more available: google-plus, flickr, dribbble, pinterest, instagram, tumblr, linkedin, etc.)
-social:
-  - title: twitter
-    url: http://twitter.com/jekyllrb
-  - title: facebook
-    url:
-  - title: stack-overflow
-    url: http://stackoverflow.com/questions/tagged/jekyll
-  - title: bitbucket
-    url: http://bitbucket.org/jekyll
-  - title: github
-    url: http://github.com/jekyll
+# Locale (bahasa dan wilayah)
+locale: "id_ID"
 
-# Postal address (add as many lines as necessary)
-address:
-  - line: 3481 Melrose Place
-  - line: Beverly Hills, CA 90210
+# Konfigurasi tema (jika menggunakan tema tertentu)
+theme: "minimal"
 
-# Credits content
-credits: 'Freelancer is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.'
-
-# Build settings
+# Pengaturan build Jekyll
 markdown: kramdown
-permalink: pretty
+highlighter: rouge
 
-#for posts
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      permalink: ""
+# Excerpt separator untuk menandai cuplikan
+excerpt_separator: "\n\n"
 
+# Konfigurasi plugin (jika menggunakan plugin tertentu)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Pengaturan navigasi atau menu (opsional)
+nav:
+  - name: "Beranda"
+    link: "/"
+  - name: "Tentang"
+    link: "/about"
+  - name: "Kontak"
+    link: "/contact"
+
+# Pengaturan social media (opsional)
+social:
+  twitter: "https://twitter.com/username_twitter"
+  github: "https://github.com/roniyansyah"
+  linkedin: "https://linkedin.com/in/username_linkedin"
+
+# Lainnya
+permalink: "/:categories/:title/"
+paginate: 5
+paginate_path: "/page:num/"
+
+# Config tambahan sesuai kebutuhan situs Anda
