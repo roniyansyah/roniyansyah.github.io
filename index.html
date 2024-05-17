@@ -1,172 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Datang di GitHub Pages Saya</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        body.light-mode {
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        body.dark-mode {
-            background-color: #333;
-            color: #f4f4f4;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        main {
-            text-align: center;
-            padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        nav {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        nav li {
-            margin-right: 20px;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        button {
-            padding: 10px 20px;
-            margin-top: 20px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #3e8e41;
-        }
-
-        #light-mode-btn {
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        #dark-mode-btn {
-            background-color: #333;
-            color: #f4f4f4;
-        }
-    </style>
+	<title>Simple HTML Structure</title>
+	<style>
+		/* Add some basic styling to make it look better */
+		body {
+			font-family: Arial, sans-serif;
+		}
+		.header {
+			background-color: #f0f0f0;
+			padding: 20px;
+			text-align: center;
+		}
+		.header-logo {
+			width: 50px;
+			height: 50px;
+			margin-right: 10px;
+		}
+		.main {
+			display: flex;
+			flex-direction: row;
+		}
+		.side-menu {
+			width: 20%;
+			background-color: #f7f7f7;
+			padding: 20px;
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100vh;
+			transform: translateX(-100%);
+			transition: transform 0.5s;
+		}
+		.side-menu.open {
+			transform: translateX(0);
+		}
+		.floating-menu {
+			position: fixed;
+			top: 50%;
+			right: 0;
+			background-color: #f7f7f7;
+			padding: 10px;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.floating-menu button {
+			margin-bottom: 10px;
+		}
+		.footer {
+			background-color: #f0f0f0;
+			padding: 20px;
+			text-align: center;
+			clear: both;
+		}
+		.dark-mode {
+			background-color: #333;
+			color: #fff;
+		}
+	</style>
 </head>
-<body class="light-mode">
-    <header>
-        <h1>Selamat Datang di Halaman GitHub Pages Saya</h1>
-    </header>
-    <main>
-        <p>Ini adalah halaman awal dari proyek GitHub Pages saya.</p>
-        <p>Silakan eksplorasi dan lihat proyek-proyek saya lainnya.</p>
-        <button id="modeToggle">Ubah ke Mode Gelap</button>
-    </main>
-    <footer>
-        <p>&copy; 2024 Nama Anda</p>
-    </footer>
-    <nav>
-        <ul>
-            <li><a href="#">Link 1</a></li>
-            <li><a href="#">Link 2</a></li>
-            <li><a href="#">Link 3</a></li>
-            <li>
-                <button id="light-mode-btn">Light Mode</button>
-                <button id="dark-mode-btn">Dark Mode</button>
-            </li>
-        </ul>
-    </nav>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const modeToggle = document.getElementById("modeToggle");
-            const lightModeBtn = document.getElementById("light-mode-btn");
-            const darkModeBtn = document.getElementById("dark-mode-btn");
-            const body = document.body;
+<body>
+	<header class="header">
+		<img src="logo.png" alt="Logo" class="header-logo">
+		<h1>Situs Kami</h1>
+	</header>
+	<div class="main">
+		<aside class="side-menu">
+			<h2>Side Menu</h2>
+			<ul>
+				<li><a href="page1.html">Page 1</a></li>
+				<li><a href="page2.html">Page 2</a></li>
+				<li><a href="page3.html">Page 3</a></li>
+			</ul>
+		</aside>
+		<section>
+			<h2>Main Content</h2>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</p>
+		</section>
+	</div>
+	<div class="floating-menu">
+		<button id="toggle-side-menu">Menu</button>
+		<button id="contact-button">Contact</button>
+		<button id="dark-mode-button">Dark Mode</button>
+	</div>
+	<footer class="footer">
+		<p>&copy; 2024 Situs Kami</p>
+	</footer>
 
-            modeToggle.addEventListener("click", function() {
-                if (body.classList.contains("light-mode")) {
-                    body.classList.remove("light-mode");
-                    body.classList.add("dark-mode");
-                    modeToggle.textContent = "Ubah ke Mode Terang";
-                } else {
-                    body.classList.remove("dark-mode");
-                    body.classList.add("light-mode");
-                    modeToggle.textContent = "Ubah ke Mode Gelap";
-                }
-            });
+	<script>
+		const sideMenu = document.querySelector('.side-menu');
+		const toggleSideMenuButton = document.querySelector('#toggle-side-menu');
+		const darkModeButton = document.querySelector('#dark-mode-button');
 
-            lightModeBtn.addEventListener("click", function() {
-                body.classList.remove("dark-mode");
-                body.classList.add("light-mode");
-            });
+		toggleSideMenuButton.addEventListener('click', () => {
+			sideMenu.classList.toggle('open');
+		});
 
-            darkModeBtn.addEventListener("click", function() {
-                body.classList.remove("light-mode");
-                body.classList.add("dark-mode");
-            });
-        });
-    </script>
+		darkModeButton.addEventListener('click', () => {
+			document.body.classList.toggle('dark-mode');
+		});
+	</script>
 </body>
 </html>
