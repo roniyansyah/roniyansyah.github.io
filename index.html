@@ -14,8 +14,17 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.light-mode {
             background-color: #f4f4f4;
             color: #333;
+        }
+
+        body.dark-mode {
+            background-color: #333;
+            color: #f4f4f4;
         }
 
         header {
@@ -40,22 +49,46 @@
             text-align: center;
             padding: 10px 0;
         }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
     </style>
 </head>
-<body>
+<body class="light-mode">
     <header>
         <h1>Selamat Datang di Halaman GitHub Pages Saya</h1>
     </header>
     <main>
         <p>Ini adalah halaman awal dari proyek GitHub Pages saya.</p>
         <p>Silakan eksplorasi dan lihat proyek-proyek saya lainnya.</p>
+        <button id="modeToggle">Ubah ke Mode Gelap</button>
     </main>
     <footer>
         <p>&copy; 2024 Nama Anda</p>
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            console.log("Halaman telah dimuat sepenuhnya!");
+            const modeToggle = document.getElementById("modeToggle");
+            const body = document.body;
+
+            modeToggle.addEventListener("click", function() {
+                if (body.classList.contains("light-mode")) {
+                    body.classList.remove("light-mode");
+                    body.classList.add("dark-mode");
+                    modeToggle.textContent = "Ubah ke Mode Terang";
+                } else {
+                    body.classList.remove("dark-mode");
+                    body.classList.add("light-mode");
+                    modeToggle.textContent = "Ubah ke Mode Gelap";
+                }
+            });
         });
     </script>
 </body>
