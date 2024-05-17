@@ -1,8 +1,8 @@
-title: My GitHub Pages Site
+title: Roniyansyah
 description: >- # this means to ignore newlines until "baseurl:"
-  Ini adalah deskripsi dari situs GitHub Pages saya.
+  Basinggah Balajar Babarakat
 baseurl: "" # URL dasar (misalnya /blog)
-url: "https://username.github.io" # Ganti dengan URL GitHub Pages kamu
+url: "https://roniyansyah.github.io" # Ganti dengan URL GitHub Pages kamu
 
 # Pilihan tema GitHub Pages
 theme: minima
