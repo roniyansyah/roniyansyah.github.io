@@ -1,61 +1,10 @@
-# config.yml
+title: My GitHub Pages Site
+description: >- # this means to ignore newlines until "baseurl:"
+  Ini adalah deskripsi dari situs GitHub Pages saya.
+baseurl: "" # URL dasar (misalnya /blog)
+url: "https://username.github.io" # Ganti dengan URL GitHub Pages kamu
 
-# Nama situs atau blog Anda
-name: "Roniyansyah"
+# Pilihan tema GitHub Pages
+theme: minima
 
-# Deskripsi situs Anda
-description: "urang Banjar bacaramin kitab"
-
-# URL situs Anda
-url: "https://roniyansyah.github.io/"
-
-# Base URL (jika situs Anda berada di subdirektori, misalnya /blog)
-baseurl: ""
-
-# Konfigurasi SEO
-title: "Roniyansyah"
-twitter_username: "username_twitter"
-github_username: "roniyansyah"
-
-# Email (jika ingin menampilkan di situs)
-email: "roniyronron@gmail.com"
-
-# Locale (bahasa dan wilayah)
-locale: "id_ID"
-
-# Konfigurasi tema (jika menggunakan tema tertentu)
-theme: "minimal"
-
-# Pengaturan build Jekyll
-markdown: kramdown
-highlighter: rouge
-
-# Excerpt separator untuk menandai cuplikan
-excerpt_separator: "\n\n"
-
-# Konfigurasi plugin (jika menggunakan plugin tertentu)
-plugins:
-  - jekyll-feed
-  - jekyll-seo-tag
-
-# Pengaturan navigasi atau menu (opsional)
-nav:
-  - name: "Beranda"
-    link: "/"
-  - name: "Tentang"
-    link: "/about"
-  - name: "Kontak"
-    link: "/contact"
-
-# Pengaturan social media (opsional)
-social:
-  twitter: "https://twitter.com/username_twitter"
-  github: "https://github.com/roniyansyah"
-  linkedin: "https://linkedin.com/in/username_linkedin"
-
-# Lainnya
-permalink: "/:categories/:title/"
-paginate: 5
-paginate_path: "/page:num/"
-
-# Config tambahan sesuai kebutuhan situs Anda
+# Konfigurasi lainnya bisa ditambahkan di sini
