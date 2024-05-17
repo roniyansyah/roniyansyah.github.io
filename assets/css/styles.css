@@ -13,7 +13,7 @@
       NANO Orange: hsl(24,100%,50%)
   */
 
-  --hue: 24;
+  --hue: 207;
   --sat: 85%;
   --lig: 50%;
   --first-color: hsl(var(--hue), var(--sat), var(--lig));
