@@ -1,84 +1,110 @@
-
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Kelas 6 Al Madani</title>
+<title>Kelas 6 – Al Madani</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --secondary: #0f172a;
+  --text: #334155;
+  --muted: #64748b;
+}
+
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  font-family: system-ui, sans-serif;
-  background: #f4f6f8;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+  color: var(--text);
+}
+
+/* ===== Layout ===== */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px;
 }
 
 header {
-  background: #222;
-  color: white;
-  padding: 12px;
+  text-align: center;
+  margin-bottom: 32px;
 }
 
-nav {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: var(--secondary);
 }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
+header p {
+  margin-top: 8px;
+  color: var(--muted);
 }
 
-main {
-  padding: 16px;
-}
-
-/* ===== Beranda ===== */
+/* ===== Grid Card ===== */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
 }
 
 .card {
-  background: white;
-  padding: 16px;
-  border-radius: 8px;
+  background: var(--card);
+  border-radius: 16px;
+  padding: 28px 20px;
   text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
   cursor: pointer;
-  box-shadow: 0 2px 6px rgba(0,0,0,.1);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .card:hover {
-  background: #eaeaea;
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.15);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.card-desc {
+  font-size: .9rem;
+  color: var(--muted);
 }
 
 /* ===== Data ===== */
 .controls {
-  margin-bottom: 12px;
+  margin: 16px 0;
+  text-align: center;
 }
 
 button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background: #4caf50;
+  background: var(--primary);
   color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .row {
   background: white;
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
+  padding: 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
 .row-top {
@@ -89,19 +115,18 @@ button {
 
 .bar-container {
   background: #ddd;
-  height: 12px;
+  height: 10px;
   border-radius: 6px;
   overflow: hidden;
+  margin: 6px 0;
 }
 
 .bar {
   height: 100%;
-  background: #4caf50;
+  background: var(--primary);
 }
 
-.stars {
-  font-size: 14px;
-}
+.stars { font-size: .85rem; }
 
 /* ===== Loading ===== */
 .loader {
@@ -114,7 +139,7 @@ button {
   width: 40px;
   height: 40px;
   border: 5px solid #ddd;
-  border-top: 5px solid #4caf50;
+  border-top: 5px solid var(--primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
@@ -127,13 +152,16 @@ button {
 
 <body>
 
+<div class="container">
+
 <header>
-  <nav>
-    <a onclick="showHome()">Kelas 6 Al Madani</a>
-  </nav>
+  <h1>Kelas 6 – Al Madani</h1>
+  <p>Pilih paket penilaian atau evaluasi</p>
 </header>
 
 <main id="content"></main>
+
+</div>
 
 <script>
 /* ===== KONFIG ===== */
@@ -145,24 +173,39 @@ let sheets = [];
 let currentData = [];
 let rankingOn = false;
 
+/* ===== IKON OTOMATIS ===== */
+function getIcon(name) {
+  const n = name.toLowerCase();
+  if (n.includes("kuis")) return "📝";
+  if (n.includes("paket")) return "📦";
+  if (n.includes("alfa")) return "🅰️";
+  if (n.includes("beta")) return "🅱️";
+  return "📘";
+}
+
 /* ===== BERANDA ===== */
 function showHome() {
   rankingOn = false;
+  let html = `<section class="grid">`;
 
-  let html = "<h2>Pilih Paket</h2><div class='grid'>";
   sheets.forEach(s => {
-    html += `<div class="card" onclick="loadSheet('${s}')">${s}</div>`;
+    html += `
+      <div class="card" onclick="loadSheet('${s}')">
+        <div class="card-icon">${getIcon(s)}</div>
+        <div class="card-title">${s}</div>
+        <div class="card-desc">Klik untuk melihat hasil</div>
+      </div>
+    `;
   });
-  html += "</div>";
 
+  html += `</section>`;
   document.getElementById("content").innerHTML = html;
 }
 
 /* ===== LOAD DATA ===== */
 function loadSheet(sheet) {
-  document.getElementById("content").innerHTML = `
-    <div class="loader"><div class="spinner"></div></div>
-  `;
+  document.getElementById("content").innerHTML =
+    `<div class="loader"><div class="spinner"></div></div>`;
 
   fetch(`${API_BASE}?sheet=${encodeURIComponent(sheet)}`)
     .then(r => r.json())
@@ -176,9 +219,7 @@ function loadSheet(sheet) {
 /* ===== RENDER DATA ===== */
 function renderData(sheet) {
   let data = [...currentData];
-  if (rankingOn) {
-    data.sort((a, b) => b.jumlah - a.jumlah);
-  }
+  if (rankingOn) data.sort((a,b)=>b.jumlah-a.jumlah);
 
   let html = `
     <h2>${sheet}</h2>
@@ -186,23 +227,22 @@ function renderData(sheet) {
       <button onclick="toggleRanking()">
         ${rankingOn ? "Urutan Asli" : "Urutkan Ranking"}
       </button>
+      <button onclick="showHome()">Kembali</button>
     </div>
   `;
 
-  data.forEach((item, i) => {
-    const percent = Math.round((item.jumlah / MAX_CHECKBOX) * 100);
-    const stars = "⭐".repeat(item.jumlah);
-
+  data.forEach((d,i)=>{
+    const pct = Math.round(d.jumlah / MAX_CHECKBOX * 100);
     html += `
       <div class="row">
         <div class="row-top">
-          <span>${rankingOn ? "#" + (i + 1) + " " : ""}${item.nama}</span>
-          <span>${percent}%</span>
+          <span>${rankingOn ? "#"+(i+1)+" " : ""}${d.nama}</span>
+          <span>${pct}%</span>
         </div>
         <div class="bar-container">
-          <div class="bar" style="width:${percent}%"></div>
+          <div class="bar" style="width:${pct}%"></div>
         </div>
-        <div class="stars">${stars}</div>
+        <div class="stars">${"⭐".repeat(d.jumlah)}</div>
       </div>
     `;
   });
@@ -210,7 +250,7 @@ function renderData(sheet) {
   document.getElementById("content").innerHTML = html;
 }
 
-/* ===== TOGGLE RANKING ===== */
+/* ===== TOGGLE ===== */
 function toggleRanking() {
   rankingOn = !rankingOn;
   renderData(document.querySelector("h2").innerText);
@@ -218,8 +258,8 @@ function toggleRanking() {
 
 /* ===== INIT ===== */
 fetch(`${API_BASE}?action=list`)
-  .then(r => r.json())
-  .then(list => {
+  .then(r=>r.json())
+  .then(list=>{
     sheets = list;
     showHome();
   });
