@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Kelas 6 – Al Madani</title>
+<title>Kelas 6 – Kuis</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
@@ -155,8 +155,8 @@ button {
 <div class="container">
 
 <header>
-  <h1>Kelas 6 – Al Madani</h1>
-  <p>Pilih paket penilaian atau evaluasi</p>
+  <h1>Kelas 6 – Kuis</h1>
+  <p>Yuk, Evaluasi Belajar.</p>
 </header>
 
 <main id="content"></main>
@@ -176,10 +176,8 @@ let rankingOn = false;
 /* ===== IKON OTOMATIS ===== */
 function getIcon(name) {
   const n = name.toLowerCase();
-  if (n.includes("kuis")) return "📝";
-  if (n.includes("paket")) return "📦";
-  if (n.includes("alfa")) return "🅰️";
-  if (n.includes("beta")) return "🅱️";
+  if (n.includes("Kuis")) return "📝";
+  if (n.includes("Paket")) return "📦";
   return "📘";
 }
 
@@ -266,4 +264,9 @@ fetch(`${API_BASE}?action=list`)
 </script>
 
 </body>
+
+  <footer>
+      © 2026 Almadani • Powered by <a href="https://arkanin.my.id" target="_blank">Arkanin</a>
+
+    </footer>
 </html>
