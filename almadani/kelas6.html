@@ -7,176 +7,159 @@
 
 <style>
 :root {
-  --bg: #f4f6f8;
-  --card: #ffffff;
-  --primary: #2563eb;
-  --secondary: #0f172a;
-  --text: #334155;
-  --muted: #64748b;
+  --primary:#2563eb;
+  --text:#334155;
+  --muted:#64748b;
 }
 
-* { box-sizing: border-box; }
+*{box-sizing:border-box}
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: linear-gradient(135deg, #e0e7ff, #f8fafc);
-  color: var(--text);
+body{
+  margin:0;
+  font-family:system-ui,sans-serif;
+  background:linear-gradient(135deg,#e0e7ff,#f8fafc);
+  color:var(--text);
 }
 
-/* ===== Layout ===== */
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 24px;
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:24px;
 }
 
-header {
-  text-align: center;
-  margin-bottom: 32px;
+header{
+  text-align:center;
+  margin-bottom:24px;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  color: var(--secondary);
+.home-link{
+  text-decoration:none;
+  color:inherit;
 }
 
-header p {
-  margin-top: 8px;
-  color: var(--muted);
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:20px;
 }
 
-  footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-  
-.home-link {
-  text-decoration: none;
-  color: inherit;
+.card{
+  background:white;
+  border-radius:16px;
+  padding:28px 20px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,.08);
+  cursor:pointer;
+  transition:.25s;
 }
 
-.home-link:hover {
-  text-decoration: underline;
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,.15);
 }
 
-/* ===== Grid Card ===== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.card-icon{font-size:2.5rem;margin-bottom:12px}
+.card-title{font-weight:600}
+
+/* ===== Controls ===== */
+.controls{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin:16px 0;
+  flex-wrap:wrap;
 }
 
-.card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 28px 20px;
-  text-align: center;
-  box-shadow: 0 10px 25px rgba(0,0,0,.08);
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
+button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0,0,0,.15);
+/* ===== Row & Ranking ===== */
+.row{
+  background:white;
+  padding:14px;
+  border-radius:12px;
+  margin-bottom:10px;
+  animation:fadeIn .4s ease;
 }
 
-.card-icon {
-  font-size: 2.5rem;
-  margin-bottom: 12px;
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(6px)}
+  to{opacity:1;transform:none}
 }
 
-.card-title {
-  font-weight: 600;
-  color: var(--secondary);
+.row-top{
+  display:flex;
+  justify-content:space-between;
+  font-weight:bold;
 }
 
-.card-desc {
-  font-size: .9rem;
-  color: var(--muted);
+/* ===== Progress Color ===== */
+.low{
+  border-left:6px solid #ef4444;
+  background:#fef2f2;
+}
+.mid{
+  border-left:6px solid #f59e0b;
+  background:#fffbeb;
+}
+.high{
+  border-left:6px solid #22c55e;
+  background:#f0fdf4;
+}
+.full{
+  border-left:6px solid #15803d;
+  background:#dcfce7;
 }
 
-/* ===== Data ===== */
-.controls {
-  margin: 16px 0;
-  text-align: center;
+.bar-container{
+  background:#ddd;
+  height:10px;
+  border-radius:6px;
+  overflow:hidden;
+  margin:6px 0;
+}
+.bar{
+  height:100%;
+  background:var(--primary);
+  transition:width .6s ease;
 }
 
-button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-}
+.stars{font-size:.85rem}
 
-.row {
-  background: white;
-  padding: 14px;
-  border-radius: 12px;
-  margin-bottom: 10px;
+/* ===== Loader ===== */
+.loader{
+  display:flex;
+  justify-content:center;
+  margin-top:40px;
 }
-
-.row-top {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
+.spinner{
+  width:40px;
+  height:40px;
+  border:5px solid #ddd;
+  border-top:5px solid var(--primary);
+  border-radius:50%;
+  animation:spin 1s linear infinite;
 }
-
-.bar-container {
-  background: #ddd;
-  height: 10px;
-  border-radius: 6px;
-  overflow: hidden;
-  margin: 6px 0;
-}
-
-.bar {
-  height: 100%;
-  background: var(--primary);
-}
-
-.stars { font-size: .85rem; }
-
-/* ===== Loading ===== */
-.loader {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 5px solid #ddd;
-  border-top: 5px solid var(--primary);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+@keyframes spin{to{transform:rotate(360deg)}}
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
 <header>
   <h1>
-  <a href="http://aturkata.my.id/almadani/" class="home-link">
-    Al Madani Learning Hub
-  </a>
-</h1>
-  <p>Kelas 6 – Kuis | Yuk, Evaluasi Belajar.</p>
+    <a class="home-link" href="http://aturkata.my.id/almadani/">
+      Al Madani Learning Hub
+    </a>
+  </h1>
+  <p>Kelas 6 – Kuis</p>
 </header>
 
 <main id="content"></main>
@@ -184,77 +167,100 @@ button {
 </div>
 
 <script>
-/* ===== KONFIG ===== */
-const API_BASE = "https://script.google.com/macros/s/AKfycbziID9ytwg6hpHqOUwJbiRyH07gK9XvP08A3KnJNL47M8AN-o-yAibU0Bs_9HOhdP6Hrw/exec";
-const MAX_CHECKBOX = 40;
+const API_BASE="https://script.google.com/macros/s/AKfycbziID9ytwg6hpHqOUwJbiRyH07gK9XvP08A3KnJNL47M8AN-o-yAibU0Bs_9HOhdP6Hrw/exec";
+const MAX_CHECKBOX=40;
 
-/* ===== STATE ===== */
-let sheets = [];
-let currentData = [];
-let rankingOn = false;
+let sheets=[];
+let currentData=[];
+let rankingOn=false;
+let filterOn=false;
 
-/* ===== IKON OTOMATIS ===== */
-function getIcon(name) {
-  const n = name.toLowerCase();
-  if (n.includes("kuis")) return "📝";
-  if (n.includes("paket")) return "📦";
-  return "📘";
+/* ===== Helpers ===== */
+function getIcon(n){
+  n=n.toLowerCase();
+  if(n.includes("kuis"))return"📝";
+  if(n.includes("paket"))return"📦";
+  return"📘";
 }
 
-/* ===== BERANDA ===== */
-function showHome() {
-  rankingOn = false;
-  let html = `<section class="grid">`;
+function getLevel(p){
+  if(p<40)return"low";
+  if(p<80)return"mid";
+  if(p<100)return"high";
+  return"full";
+}
 
-  sheets.forEach(s => {
-    html += `
+function getRankIcon(i){
+  if(i===0)return"🥇";
+  if(i===1)return"🥈";
+  if(i===2)return"🥉";
+  return"🎯";
+}
+
+/* ===== Home ===== */
+function showHome(){
+  rankingOn=false;
+  filterOn=false;
+
+  let html=`<section class="grid">`;
+  sheets.forEach(s=>{
+    html+=`
       <div class="card" onclick="loadSheet('${s}')">
         <div class="card-icon">${getIcon(s)}</div>
         <div class="card-title">${s}</div>
-        <div class="card-desc">Klik untuk melihat hasil</div>
-      </div>
-    `;
+      </div>`;
   });
-
-  html += `</section>`;
-  document.getElementById("content").innerHTML = html;
+  html+=`</section>`;
+  content.innerHTML=html;
 }
 
-/* ===== LOAD DATA ===== */
-function loadSheet(sheet) {
-  document.getElementById("content").innerHTML =
-    `<div class="loader"><div class="spinner"></div></div>`;
-
-  fetch(`${API_BASE}?sheet=${encodeURIComponent(sheet)}`)
-    .then(r => r.json())
-    .then(data => {
-      currentData = data;
-      rankingOn = false;
-      renderData(sheet);
+/* ===== Load ===== */
+function loadSheet(sheet){
+  content.innerHTML=`<div class="loader"><div class="spinner"></div></div>`;
+  fetch(`${API_BASE}?sheet=${sheet}`)
+    .then(r=>r.json())
+    .then(d=>{
+      currentData=d;
+      rankingOn=false;
+      filterOn=false;
+      render(sheet);
     });
 }
 
-/* ===== RENDER DATA ===== */
-function renderData(sheet) {
-  let data = [...currentData];
-  if (rankingOn) data.sort((a,b)=>b.jumlah-a.jumlah);
+/* ===== Render ===== */
+function render(sheet){
+  let data=[...currentData];
 
-  let html = `
+  if(filterOn){
+    data=data.filter(d=>(d.jumlah/MAX_CHECKBOX*100)<40);
+  }
+
+  if(rankingOn){
+    data.sort((a,b)=>b.jumlah-a.jumlah);
+  }
+
+  let html=`
     <h2>${sheet}</h2>
     <div class="controls">
-      <button onclick="toggleRanking()">
-        ${rankingOn ? "Urutan Asli" : "Urutkan Ranking"}
+      <button onclick="toggleRank()">
+        ${rankingOn?"Urutan Asli":"Ranking"}
+      </button>
+      <button onclick="toggleFilter()">
+        ${filterOn?"Tampilkan Semua":"Belum Tuntas"}
       </button>
       <button onclick="showHome()">Kembali</button>
     </div>
   `;
 
   data.forEach((d,i)=>{
-    const pct = Math.round(d.jumlah / MAX_CHECKBOX * 100);
-    html += `
-      <div class="row">
+    const pct=Math.round(d.jumlah/MAX_CHECKBOX*100);
+    const cls=getLevel(pct);
+    const icon=rankingOn?getRankIcon(i)+" ":"";
+
+    html+=`
+      <div class="row ${cls}">
         <div class="row-top">
-          <span>${rankingOn ? "#"+(i+1)+" " : ""}${d.nama}</span>
+          <span>${icon}${d.nama}</span>
           <span>${pct}%</span>
         </div>
         <div class="bar-container">
@@ -265,28 +271,21 @@ function renderData(sheet) {
     `;
   });
 
-  document.getElementById("content").innerHTML = html;
+  content.innerHTML=html;
 }
 
-/* ===== TOGGLE ===== */
-function toggleRanking() {
-  rankingOn = !rankingOn;
-  renderData(document.querySelector("h2").innerText);
-}
+/* ===== Toggles ===== */
+function toggleRank(){rankingOn=!rankingOn;render(document.querySelector("h2").innerText)}
+function toggleFilter(){filterOn=!filterOn;render(document.querySelector("h2").innerText)}
 
-/* ===== INIT ===== */
+/* ===== Init ===== */
 fetch(`${API_BASE}?action=list`)
   .then(r=>r.json())
-  .then(list=>{
-    sheets = list;
-    showHome();
-  });
+  .then(l=>{sheets=l;showHome()});
 </script>
-
-</body>
-
-  <footer>
+<footer>
       © 2026 Almadani • Powered by <a href="https://arkanin.my.id" target="_blank">Arkanin</a>
 
     </footer>
+</body>
 </html>
