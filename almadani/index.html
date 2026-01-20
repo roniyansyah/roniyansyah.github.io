@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Rekap Penilaian Kelas 6 Al Madani Genap 2026</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    nav a {
+      margin-right: 12px;
+      text-decoration: none;
+      color: #1a73e8;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .row {
+      margin-bottom: 16px;
+    }
+
+    .name {
+      font-weight: bold;
+      width: 100px;
+      display: inline-block;
+    }
+
+    .bar-container {
+      width: 300px;
+      height: 14px;
+      background: #eee;
+      border-radius: 7px;
+      display: inline-block;
+      margin: 0 10px;
+      vertical-align: middle;
+    }
+
+    .bar {
+      height: 100%;
+      background: #f4b400;
+      border-radius: 7px;
+    }
+
+    .stars {
+      display: block;
+      font-size: 14px;
+      margin-left: 110px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Rekap Penilaian</h2>
+
+<nav id="nav"></nav>
+<hr>
+
+<div id="data"></div>
+
+<script>
+/* ================= KONFIGURASI ================= */
+const API_BASE = "https://script.google.com/macros/s/AKfycbzJsP40KyLwyRnnT0EgrgzWAJvhJLWhmu4SiTZTwVH1q5fOWLXT7zQR2wT1Psk94T-x/exec";
+const MAX_CHECKBOX = 40;
+
+const paketList = [
+  "paket_1",
+  "paket_2",
+  "paket_3",
+  "paket_4",
+  "paket_5",
+  "paket_6",
+  "paket_7"
+];
+
+let currentView = "beranda";
+
+/* ================= NAVIGASI ================= */
+function renderNav() {
+  const nav = document.getElementById("nav");
+  nav.innerHTML = "";
+
+  if (currentView !== "beranda") {
+    const beranda = document.createElement("a");
+    beranda.href = "#";
+    beranda.textContent = "Beranda";
+    beranda.onclick = () => showBeranda();
+    nav.appendChild(beranda);
+  }
+
+  paketList.forEach(paket => {
+    if (paket !== currentView) {
+      const a = document.createElement("a");
+      a.href = "#";
+      a.textContent = paket.replace("_", " ").toUpperCase();
+      a.onclick = () => loadPaket(paket);
+      nav.appendChild(a);
+    }
+  });
+}
+
+/* ================= BERANDA ================= */
+function showBeranda() {
+  currentView = "beranda";
+  renderNav();
+
+  document.getElementById("data").innerHTML = `
+    <p><strong>Selamat datang.</strong></p>
+    <p>Pilih paket pada menu untuk melihat hasil penilaian.</p>
+  `;
+}
+
+/* ================= LOAD PAKET ================= */
+function loadPaket(sheetName) {
+  currentView = sheetName;
+  renderNav();
+
+  fetch(`${API_BASE}?sheet=${sheetName}`)
+    .then(res => res.json())
+    .then(data => {
+
+      // ranking: terbesar ke terkecil
+      data.sort((a, b) => b.jumlah - a.jumlah);
+
+      const container = document.getElementById("data");
+      container.innerHTML = `<h3>${sheetName.replace("_", " ").toUpperCase()}</h3>`;
+
+      data.forEach((item, index) => {
+        const rank = index + 1;
+        const percent = Math.round((item.jumlah / MAX_CHECKBOX) * 100);
+        const stars = "⭐".repeat(item.jumlah);
+
+        const div = document.createElement("div");
+        div.className = "row";
+        div.innerHTML = `
+          <strong>#${rank}</strong>
+          <span class="name">${item.nama}</span>
+
+          <div class="bar-container">
+            <div class="bar" style="width:${percent}%"></div>
+          </div>
+
+          ${percent}%
+          <span class="stars">${stars}</span>
+        `;
+        container.appendChild(div);
+      });
+    });
+}
+
+/* ================= INIT ================= */
+renderNav();
+showBeranda();
+</script>
+
+</body>
+</html>
