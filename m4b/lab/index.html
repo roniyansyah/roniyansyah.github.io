@@ -14,8 +14,23 @@ header h1{font-size:2rem;margin-bottom:0.5rem;cursor:pointer;color:#1f3c88;}
 header h1:hover{text-decoration:underline;}
 header p{font-size:1rem;color:#555;}
 
-/* SEARCH */
-#search{width:50%;padding:0.8rem 1rem;margin:1rem 0;font-size:1rem;border-radius:10px;border:1px solid #ccc;}
+/* SEARCH - default desktop */
+#search {
+  width: 50%;
+  padding: 0.8rem 1rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+/* SEARCH - responsive mobile */
+@media (max-width: 768px) {
+  #search {
+    width: 100%;
+  }
+}
+
 
 /* LOADER */
 #loader{display:none;width:50px;height:50px;border:5px solid #f3f3f3;border-top:5px solid #1f3c88;border-radius:50%;animation:spin 1s linear infinite;margin:2rem auto;}
