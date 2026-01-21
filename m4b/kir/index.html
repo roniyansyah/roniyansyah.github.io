@@ -6,174 +6,95 @@
   <title>MAN 4 Banjar Learning Hub</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    * { box-sizing: border-box; margin:0; padding:0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}
+    body { display:flex; flex-direction:column; min-height:100vh; background: linear-gradient(135deg, #f5f7fa, #e4ecf7); color:#333; animation: fadeIn 0.8s ease-in-out;}
+    @keyframes fadeIn { from {opacity:0; transform:scale(0.98);} to {opacity:1; transform:scale(1);} }
+    header { padding:2rem 1rem; text-align:center; }
+    header h1 { font-size:2rem; margin-bottom:0.5rem; letter-spacing:1px; color:#000; cursor:pointer;}
+    main { flex:1; display:flex; flex-direction:column; align-items:center; padding:2rem 1rem 2.5rem; width:100%; gap:1.8rem; }
+    footer { text-align:center; padding:1rem; background:rgba(255,255,255,0.7); backdrop-filter:blur(6px); font-size:0.9rem;}
+    footer a { color:#1f3c88; text-decoration:none; font-weight:600; }
+    footer a:hover { text-decoration:underline; }
 
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
-      color: #333;
-      animation: fadeIn 0.8s ease-in-out;
-    }
+    .section-title { text-align:center; margin:2rem 0; }
+    .section-title h2 { font-size:1.8rem; color:#1f3c88; margin-bottom:0.5rem; }
+    .section-title p { font-size:1rem; color:#555; }
 
-    @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.98);}
-      to {opacity: 1; transform: scale(1);}
-    }
-
-    header {
-      padding: 2rem 1rem;
-      text-align: center;
-    }
-
-    header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-      letter-spacing: 1px;
-    }
-
-    header p {
-      color: #555;
-      font-size: 1rem;
-    }
-
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem 2.5rem;
-      width: 100%;
-      gap: 1.8rem;
-    }
-
-    /* ================= CANVA EMBED RESPONSIVE ================= */
+    /* ================= CANVA RESPONSIVE ================= */
     .canva-container {
-      position: relative;
       width: 100%;
-      max-width: 70%; /* Desktop max 70% lebar layar */
-      padding-top: 56.25%; /* 16:9 aspect ratio */
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      max-width: 70%; /* desktop max 70% width */
+      position: relative;
       border-radius: 12px;
       overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .canva-container:hover {
-      transform: translateY(-5px) scale(1.01);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-
-    .canva-container iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 70%;
-      border: none;
-    }
+    .canva-container:hover { transform:translateY(-5px) scale(1.01); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+    .canva-container iframe { width:100%; border:none; display:block; }
 
     /* ================= CARD LINK ================= */
-    .canva-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 100%;
-      max-width: 70%;
-    }
-
-    .canva-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #1f3c88, #3f72af);
-      color: #fff;
-      padding: 1.2rem;
-      border-radius: 16px;
-      text-decoration: none;
-      font-size: 1rem;
-      font-weight: 600;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-      text-align: center;
-    }
-
-    .canva-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
-      filter: brightness(1.12);
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(6px);
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #1f3c88;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
+    .canva-cards { display:flex; flex-direction:column; gap:1rem; width:100%; max-width:70%; }
+    .canva-card { display:flex; flex-direction:column; justify-content:center; align-items:center; background: linear-gradient(135deg, #1f3c88, #3f72af); color:#fff; padding:1.2rem; border-radius:16px; text-decoration:none; font-size:1rem; font-weight:600; box-shadow:0 6px 18px rgba(0,0,0,0.12); text-align:center; transition:transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;}
+    .canva-card:hover { transform:translateY(-6px) scale(1.02); box-shadow:0 12px 28px rgba(0,0,0,0.2); filter:brightness(1.12); }
 
     /* ================= RESPONSIVE ================= */
-    @media (max-width: 1024px) {
-      .canva-container, .canva-cards { max-width: 85%; }
-    }
-
-    @media (max-width: 768px) {
-      .canva-container, .canva-cards { max-width: 100%; }
-    }
-
-    @media (max-width: 420px) {
-      header { padding: 1.5rem 1rem; }
-      header h1 { font-size: 1.45rem; }
-    }
+    @media (max-width: 1024px){ .canva-container, .canva-cards { max-width:85%; } }
+    @media (max-width: 768px){ .canva-container, .canva-cards { max-width:100%; } }
+    @media (max-width: 420px){ header h1 { font-size:1.45rem; } }
 
   </style>
 </head>
-
 <body>
 
 <header>
-  <h1 onclick="window.location.href='https://aturkata.my.id/m4b'" style="color: #000; cursor: pointer;">
-    M4B Learning Hub
-  </h1>
+  <h1 onclick="window.location.href='https://aturkata.my.id/m4b'">M4B Learning Hub</h1>
 </header>
 
-<div style="text-align:center; margin:2rem 0;">
-  <h2 style="font-size:1.8rem; color:#1f3c88; margin-bottom:0.5rem;">Kelompok Ilmiah Remaja</h2>
-  <p style="font-size:1rem; color:#555; margin-top:0;">Salam Ilmiah | Muda, Berkarya, Berprestasi</p>
+<div class="section-title">
+  <h2>Kelompok Ilmiah Remaja</h2>
+  <p>Salam Ilmiah | Muda, Berkarya, Berprestasi</p>
 </div>
-  
-  <main>
-    <!-- Embed Canva Utama -->
-    <div class="canva-container">
-      <iframe loading="lazy" src="https://www.canva.com/design/DAG4ln5Qdoo/chaK9eBPygFLS-IuGI3Tnw/view?embed" allowfullscreen></iframe>
-    </div>
 
-    <!-- Card link Canva lainnya -->
-    <div class="canva-cards">
-      <a class="canva-card" href="https://www.canva.com/design/DAG4ln5Qdoo/view?utm_content=DAG4ln5Qdoo" target="_blank" rel="noopener">KIR NextGen Lab Full</a>
-      <a class="canva-card" href="#" target="_blank" rel="noopener">Canva Link 2</a>
-      <a class="canva-card" href="#" target="_blank" rel="noopener">Canva Link 3</a>
-    </div>
-  </main>
+<main>
+  <!-- Embed Canva Utama -->
+  <div class="canva-container" id="canvaContainer">
+    <iframe id="canvaIframe" loading="lazy" src="https://www.canva.com/design/DAG4ln5Qdoo/chaK9eBPygFLS-IuGI3Tnw/view?embed" allowfullscreen></iframe>
+  </div>
 
-  <footer>
-    <p>Powered by <a href="https://arkanin.my.id" target="_blank">Arkanin</a></p>
-  </footer>
+  <!-- Card link Canva lainnya -->
+  <div class="canva-cards">
+    <a class="canva-card" href="https://www.canva.com/design/DAG4ln5Qdoo/view?utm_content=DAG4ln5Qdoo" target="_blank" rel="noopener">KIR NextGen Lab Full</a>
+    <a class="canva-card" href="#" target="_blank" rel="noopener">Canva Link 2</a>
+    <a class="canva-card" href="#" target="_blank" rel="noopener">Canva Link 3</a>
+  </div>
+</main>
+
+<footer>
+  <p>Powered by <a href="https://arkanin.my.id" target="_blank">Arkanin</a></p>
+</footer>
+
+<script>
+  // ================= AUTO HEIGHT EMBED CANVA =================
+  function resizeCanva() {
+    const container = document.getElementById('canvaContainer');
+    const iframe = document.getElementById('canvaIframe');
+    const containerWidth = container.offsetWidth;
+
+    // Masukkan rasio desain Canva Anda (lebar:tinggi), contoh poster vertikal 1080x1920 => rasio 9:16
+    const designWidth = 1080;
+    const designHeight = 1920;
+    const ratio = designHeight / designWidth;
+
+    // Hitung height sesuai width container
+    const newHeight = containerWidth * ratio;
+    iframe.style.height = newHeight + 'px';
+  }
+
+  // Panggil saat load dan resize window
+  window.addEventListener('load', resizeCanva);
+  window.addEventListener('resize', resizeCanva);
+</script>
 
 </body>
 </html>
