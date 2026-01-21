@@ -1,1 +1,44 @@
-INI LAB
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Daftar Modul Praktikum</title>
+</head>
+<body>
+
+<input id="search" placeholder="Cari modul..." />
+<ul id="list"></ul>
+
+<script>
+const DATA_URL = 'https://script.google.com/macros/s/AKfycbxP9Jun4DV7or8KJZAJ3hlEZ16J77GbK_v8vorluTjqI0Mp6nRRWPezpGWLRpEniUTthw/exec';
+let allData = [];
+
+fetch(DATA_URL)
+  .then(r => r.json())
+  .then(data => {
+    allData = data;
+    render(data.slice(0, 50));
+  });
+
+function render(data) {
+  list.innerHTML = '';
+  data.forEach(d => {
+    list.innerHTML += `
+      <li>
+        <a href="viewer.html?id=${d.file_id}">
+          ${d.title}
+        </a>
+      </li>`;
+  });
+}
+
+search.oninput = () => {
+  const q = search.value.toLowerCase();
+  render(allData.filter(d =>
+    d.title.toLowerCase().includes(q)
+  ).slice(0, 30));
+};
+</script>
+
+</body>
+</html>
