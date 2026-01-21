@@ -39,27 +39,30 @@
     main {
       flex: 1;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       gap: 1.5rem;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       max-width: 1100px;
       margin: 0 auto;
     }
 
     .card {
       background: #ffffff;
-      border-radius: 16px;
-      padding: 1.8rem;
+      border-radius: 18px;
+      padding: 2rem 1.8rem;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
+      color: #fff;
+      cursor: pointer;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+      filter: brightness(1.12);
     }
 
     .card h2 {
@@ -91,6 +94,64 @@
     footer a:hover {
       text-decoration: underline;
     }
+      .card {
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .card a {
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.15) rotate(-3deg);
+    }
+
+    .lab {
+      background: linear-gradient(135deg, #1f3c88, #3f72af);
+    }
+
+    .lab:hover {
+      background: linear-gradient(135deg, #162d66, #355f9c);
+    }
+
+    .kir {
+      background: linear-gradient(135deg, #2d6a4f, #52b788);
+    }
+
+    .kir:hover {
+      background: linear-gradient(135deg, #245640, #409f73);
+    }
+
+    .sc {
+      background: linear-gradient(135deg, #9d0208, #f48c06);
+    }
+
+    .sc:hover {
+      background: linear-gradient(135deg, #7f0106, #e07b05);
+    }
+
+    .card h2 {
+      color: #fff;
+    }
+
+    .card p {
+      color: #f1f1f1;
+    }
   </style>
 </head>
 <body>
@@ -101,58 +162,28 @@
   </header>
 
   <main>
-    <div class="card">
-      <h2>LAB IPA M4B</h2>
-      <p>Layanan untuk Guru dan Murid</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/lab" target="_blank">Kunjungi Layanan</a>
+    <div class="card lab">
+      <a href="https://aturkata.my.id/m4b/lab" target="_blank">
+        <div class="card-icon">🧪</div>
+        <h2>LAB IPA M4B</h2>
+        <p>Layanan untuk Guru dan Murid</p>
+      </a>
     </div>
 
-    <div class="card">
-      <h2>KIR M4B</h2>
-      <p>Salam Ilmiah | Muda, Berkarya, Berinovasi</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/kir" target="_blank">Kunjungi Layanan</a>
+    <div class="card kir">
+      <a href="https://aturkata.my.id/m4b/kir" target="_blank">
+        <div class="card-icon">🔬</div>
+        <h2>KIR M4B</h2>
+        <p>Salam Ilmiah | Muda, Berkarya, Berinovasi</p>
+      </a>
     </div>
 
-    <div class="card">
-      <h2>SC M4B</h2>
-      <p>Bahan Belajar &amp; Eksperimen</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/sc" target="_blank">Kunjungi Layanan</a>
-    </div>
-
-    <div class="card">
-      <h2>LAB IPA M4B</h2>
-      <p>Layanan untuk Guru dan Murid</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/lab" target="_blank">Kunjungi Layanan</a>
-    </div>
-
-    <div class="card">
-      <h2>KIR M4B</h2>
-      <p>Salam Ilmiah | Muda, Berkarya, Berinovasi</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/kir" target="_blank">Kunjungi Layanan</a>
-    </div>
-
-    <div class="card">
-      <h2>SC M4B</h2>
-      <p>Bahan Belajar &amp; Eksperimen</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/sc" target="_blank">Kunjungi Layanan</a>
-    </div>
-
-    <div class="card">
-      <h2>LAB IPA M4B</h2>
-      <p>Layanan untuk Guru dan Murid</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/lab" target="_blank">Kunjungi Layanan</a>
-    </div>
-
-    <div class="card">
-      <h2>KIR M4B</h2>
-      <p>Salam Ilmiah | Muda, Berkarya, Berprestasi</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/kir" target="_blank">Kunjungi Layanan</a>
-    </div>
-
-    <div class="card">
-      <h2>SC M4B</h2>
-      <p>Bahan Belajar &amp; Eksperimen</p>
-      <a class="card-link" href="https://aturkata.my.id/m4b/sc" target="_blank">Kunjungi Layanan</a>
+    <div class="card sc">
+      <a href="https://aturkata.my.id/m4b/sc" target="_blank">
+        <div class="card-icon">📚</div>
+        <h2>SC M4B</h2>
+        <p>Bahan Belajar &amp; Eksperimen</p>
+      </a>
     </div>
   </main>
 
