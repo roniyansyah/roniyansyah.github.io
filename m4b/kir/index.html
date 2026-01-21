@@ -27,7 +27,6 @@
       to {opacity: 1; transform: scale(1);}
     }
 
-    /* ================= HEADER ================= */
     header {
       padding: 2rem 1rem;
       text-align: center;
@@ -44,23 +43,21 @@
       font-size: 1rem;
     }
 
-    /* ================= MAIN ================= */
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem 2.5rem;
-      max-width: 900px;
-      margin: 0 auto;
       width: 100%;
       gap: 1.8rem;
     }
 
-    /* ================= CANVA EMBED ================= */
+    /* ================= CANVA EMBED RESPONSIVE ================= */
     .canva-container {
       position: relative;
       width: 100%;
+      max-width: 70%; /* Desktop max 70% lebar layar */
       padding-top: 56.25%; /* 16:9 aspect ratio */
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       border-radius: 12px;
@@ -80,35 +77,38 @@
       border: none;
     }
 
-    /* ================= LINK CANVA ================= */
-    .canva-links {
+    /* ================= CARD LINK ================= */
+    .canva-cards {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 1rem;
-      justify-content: center;
-      margin-top: 1rem;
       width: 100%;
+      max-width: 70%;
     }
 
-    .canva-links a {
-      background: #1f3c88;
+    .canva-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #1f3c88, #3f72af);
       color: #fff;
-      padding: 0.7rem 1.2rem;
-      border-radius: 10px;
+      padding: 1.2rem;
+      border-radius: 16px;
       text-decoration: none;
-      transition: background 0.3s ease, transform 0.3s ease;
       font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
       text-align: center;
-      flex: 1 1 30%; /* responsive 3 button per row */
-      min-width: 120px;
     }
 
-    .canva-links a:hover {
-      background: #355f9c;
-      transform: translateY(-2px) scale(1.02);
+    .canva-card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+      filter: brightness(1.12);
     }
 
-    /* ================= FOOTER ================= */
     footer {
       text-align: center;
       padding: 1rem;
@@ -128,18 +128,19 @@
     }
 
     /* ================= RESPONSIVE ================= */
+    @media (max-width: 1024px) {
+      .canva-container, .canva-cards { max-width: 85%; }
+    }
+
     @media (max-width: 768px) {
-      header h1 { font-size: 1.6rem; }
-      header p { font-size: 0.95rem; }
-      .canva-links a { flex: 1 1 45%; font-size: 0.95rem; }
+      .canva-container, .canva-cards { max-width: 100%; }
     }
 
     @media (max-width: 420px) {
       header { padding: 1.5rem 1rem; }
       header h1 { font-size: 1.45rem; }
-      .canva-links { flex-direction: column; gap: 0.8rem; }
-      .canva-links a { flex: 1 1 100%; }
     }
+
   </style>
 </head>
 
@@ -156,11 +157,11 @@
       <iframe loading="lazy" src="https://www.canva.com/design/DAG4ln5Qdoo/chaK9eBPygFLS-IuGI3Tnw/view?embed" allowfullscreen></iframe>
     </div>
 
-    <!-- Tombol/Link ke Canva Lain -->
-    <div class="canva-links">
-      <a href="https://www.canva.com/design/DAG4ln5Qdoo/view?utm_content=DAG4ln5Qdoo" target="_blank" rel="noopener">KIR NextGen Lab Full</a>
-      <a href="#" target="_blank" rel="noopener">Canva Link 2</a>
-      <a href="#" target="_blank" rel="noopener">Canva Link 3</a>
+    <!-- Card link Canva lainnya -->
+    <div class="canva-cards">
+      <a class="canva-card" href="https://www.canva.com/design/DAG4ln5Qdoo/view?utm_content=DAG4ln5Qdoo" target="_blank" rel="noopener">KIR NextGen Lab Full</a>
+      <a class="canva-card" href="#" target="_blank" rel="noopener">Canva Link 2</a>
+      <a class="canva-card" href="#" target="_blank" rel="noopener">Canva Link 3</a>
     </div>
   </main>
 
