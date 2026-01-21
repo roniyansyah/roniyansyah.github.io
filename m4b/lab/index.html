@@ -12,7 +12,7 @@ body{min-height:100vh;background:linear-gradient(135deg,#f5f7fa,#e4ecf7);display
 header{text-align:center;padding:2rem 1rem;width:100%;}
 header h1{font-size:2rem;margin-bottom:0.5rem;cursor:pointer;color:#1f3c88;}
 header h1:hover{text-decoration:underline;}
-header p{font-size:1rem;color:#555;}
+header p{font-size:1rem;color:#fff;}
 
 /* SEARCH */
 #search{width:100%;padding:0.8rem 1rem;margin:1rem 0;font-size:1rem;border-radius:10px;border:1px solid #ccc;}
@@ -50,7 +50,7 @@ header p{font-size:1rem;color:#555;}
 #pagination{text-align:center;margin:1.5rem 0;display:flex;justify-content:center;gap:0.3rem;flex-wrap:wrap;}
 #pagination button{padding:0.5rem 0.8rem;border:none;border-radius:5px;background:#1f3c88;color:#fff;cursor:pointer;transition:0.3s, transform 0.2s;}
 #pagination button:hover{background:#3f72af;transform:scale(1.05);}
-#pagination button.active{background:#162d66;transform:scale(1.05);font-weight:bold;}
+#pagination button.active{background:#45f232;transform:scale(1.05);font-weight:bold;}
 
 /* FOOTER */
 footer{text-align:center;padding:1rem;width:100%;background: rgba(255,255,255,0.7);backdrop-filter: blur(6px);font-size:0.9rem;margin-top:auto;}
@@ -104,8 +104,8 @@ const loader=document.getElementById('loader');
 
 let allData=[];
 let currentPage=1;
-const itemsPerPage=7; // tampilkan 7 card per halaman
-const pageDisplay=7;   // maksimal tombol pagination
+const itemsPerPage=5; // tampilkan 7 card per halaman
+const pageDisplay=5;   // maksimal tombol pagination
 
 // POPUP
 const overlay=document.getElementById('viewerOverlay');
