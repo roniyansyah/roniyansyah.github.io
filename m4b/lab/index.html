@@ -12,7 +12,7 @@ body{min-height:100vh;background:linear-gradient(135deg,#f5f7fa,#e4ecf7);display
 header{text-align:center;padding:2rem 1rem;width:100%;}
 header h1{font-size:2rem;margin-bottom:0.5rem;cursor:pointer;color:#1f3c88;}
 header h1:hover{text-decoration:underline;}
-header p{font-size:1rem;color:#fff;}
+header p{font-size:1rem;color:#555;}
 
 /* SEARCH */
 #search{width:100%;padding:0.8rem 1rem;margin:1rem 0;font-size:1rem;border-radius:10px;border:1px solid #ccc;}
@@ -32,10 +32,12 @@ header p{font-size:1rem;color:#fff;}
 .card p{font-size:0.85rem;line-height:1.4;color:#f1f1f1;}
 
 /* CARD COLORS */
-.lab{background:linear-gradient(135deg,#1f3c88,#3f72af);}
+.lab{background:linear-gradient(135deg,#45f232,#3f72af);}
 .kir{background:linear-gradient(135deg,#2d6a4f,#52b788);}
 .sc{background:linear-gradient(135deg,#9d0208,#f48c06);}
 
+.lab h2 { color: #fff; } /* bisa ganti sesuai keinginan */
+  
 /* POPUP VIEWER */
 #viewerOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:1000;opacity:0;pointer-events:none;transition:opacity 0.3s ease;flex-direction:column;}
 #viewerOverlay.show{opacity:1;pointer-events:auto;}
