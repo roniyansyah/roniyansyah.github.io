@@ -1,8 +1,255 @@
-<div style="position: relative; width: 100%; height: 0; padding-top: 141.4141%;
- padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
- border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https://www.canva.com/design/DAG4ln5Qdoo/chaK9eBPygFLS-IuGI3Tnw/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-</div>
-<a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAG4ln5Qdoo&#x2F;chaK9eBPygFLS-IuGI3Tnw&#x2F;view?utm_content=DAG4ln5Qdoo&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener">KIR NextGen Lab Full</a> oleh Integrasi Arkan
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MAN 4 Banjar Learning Hub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(135deg, #f5f7fa, #e4ecf7);
+      color: #333;
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0; transform: scale(0.98);}
+      to {opacity: 1; transform: scale(1);}
+    }
+
+    /* ================= HEADER ================= */
+    header {
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* ================= MAIN ================= */
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.6rem;
+      padding: 2rem 1.5rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* ================= CARD ================= */
+    .card {
+      border-radius: 20px;
+      padding: 2rem 1.8rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+      transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 22px 45px rgba(0, 0, 0, 0.2);
+      filter: brightness(1.12);
+    }
+
+    .card a {
+      text-decoration: none;
+      color: inherit;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .card-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.15) rotate(-3deg);
+    }
+
+    .card h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #f1f1f1;
+    }
+
+    /* ================= CARD COLOR ================= */
+    .lab { background: linear-gradient(135deg, #1f3c88, #3f72af); }
+    .lab:hover { background: linear-gradient(135deg, #162d66, #355f9c); }
+
+    .kir { background: linear-gradient(135deg, #2d6a4f, #52b788); }
+    .kir:hover { background: linear-gradient(135deg, #245640, #409f73); }
+
+    .sc { background: linear-gradient(135deg, #9d0208, #f48c06); }
+    .sc:hover { background: linear-gradient(135deg, #7f0106, #e07b05); }
+
+    /* ================= FOOTER ================= */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(6px);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #1f3c88;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ================= IFRAME CANVA ================= */
+    .canva-container {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 aspect ratio */
+      margin-top: 1.6em;
+      margin-bottom: 1.6em;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .canva-container:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .canva-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+
+    .canva-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+
+    .canva-links a {
+      background: #1f3c88;
+      color: #fff;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease, transform 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    .canva-links a:hover {
+      background: #355f9c;
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* ================= RESPONSIVE MOBILE ================= */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.6rem; }
+      header p { font-size: 0.95rem; }
+      main { grid-template-columns: 1fr; padding: 1.5rem 1rem 2rem; gap: 1.4rem; }
+      .card { padding: 1.8rem 1.6rem; border-radius: 22px; }
+      .card-icon { font-size: 2.8rem; }
+      .card h2 { font-size: 1.25rem; }
+      .card p { font-size: 0.95rem; }
+    }
+
+    @media (max-width: 420px) {
+      header { padding: 1.6rem 1rem 1.2rem; }
+      header h1 { font-size: 1.45rem; }
+      .card { min-height: 200px; }
+      .canva-links { flex-direction: column; gap: 0.8rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>MAN 4 Banjar Learning Hub</h1>
+    <p>Thinks Globally, Act Locally</p>
+  </header>
+
+  <main>
+    <!-- Kartu utama -->
+    <div class="card lab">
+      <a href="https://aturkata.my.id/m4b/lab" target="_blank">
+        <div class="card-icon">🧪</div>
+        <h2>LAB IPA M4B</h2>
+        <p>Layanan untuk Guru dan Murid</p>
+      </a>
+    </div>
+
+    <div class="card kir">
+      <a href="https://aturkata.my.id/m4b/kir" target="_blank">
+        <div class="card-icon">🔬</div>
+        <h2>KIR M4B</h2>
+        <p>Salam Ilmiah | Muda, Berkarya, Berprestasi</p>
+      </a>
+    </div>
+
+    <div class="card sc">
+      <a href="https://aturkata.my.id/m4b/sc" target="_blank">
+        <div class="card-icon">📚</div>
+        <h2>SC M4B</h2>
+        <p>Bahan Belajar &amp; Eksperimen</p>
+      </a>
+    </div>
+
+    <!-- ================= CANVA EMBED ================= -->
+    <div class="canva-container">
+      <iframe loading="lazy" src="https://www.canva.com/design/DAG4ln5Qdoo/chaK9eBPygFLS-IuGI3Tnw/view?embed" allowfullscreen></iframe>
+    </div>
+
+    <div class="canva-links">
+      <a href="https://www.canva.com/design/DAG4ln5Qdoo/view?utm_content=DAG4ln5Qdoo" target="_blank" rel="noopener">KIR NextGen Lab Full</a>
+      <a href="#" target="_blank" rel="noopener">Canva Link 2</a>
+      <a href="#" target="_blank" rel="noopener">Canva Link 3</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Powered by <a href="https://arkanin.my.id" target="_blank">Arkanin</a></p>
+  </footer>
+
+</body>
+</html>
