@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise 🎉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+    <div id="stars"></div>
+    <div id="hearts"></div>
+
+    <div id="opening">
+        <div class="gift-container" onclick="openGift()">
+            <img src="https://cdnl.iconscout.com/lottie/premium/thumb/birthday-gift-box-animation-gif-download-7582731.gif" alt="Kado" class="gift-gif">
+            <p class="tap-hint">Ini hadiah untukmu 🎁</p>
+            <p class="tap-hint">Selamat Ulang Tahun Icha🍀</p>
+            <p class="tap-hint">12 Maret 2002 - 12 Maret 2026</p>
+        </div>
+    </div>
+
+    <div id="mainContent" class="hidden">
+        <header>
+            <h1>🎉Selamat Ulang Tahun, Sayang! 🎉</h1>
+            <p>Terima kasih telah lahir ke dunia dan membersamai selama</p>
+        </header>
+
+        <main>
+            <section class="glass-card">
+                <div class="time-container">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <p>Hari</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <p>Jam</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <p>Menit</p>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <p>Detik</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="glass-card photo-section">
+                <h2>Bahagialah, karena bersamamu itu sangat indah.</h2>
+                <div class="slideshow">
+                    <img src="images/photo1.jpg" class="slide active">
+                    <img src="images/photo2.jpg" class="slide">
+                    <img src="images/photo3.jpg" class="slide">
+                    <img src="images/photo4.jpg" class="slide">
+                    <img src="images/photo5.jpg" class="slide">
+                    <img src="images/photo6.jpg" class="slide">
+                </div>
+            </section>
+
+            <section class="glass-card message-section">
+                <h2>Ini Harapan Untukmu</h2>
+                <div id="message" class="typewriter-text"></div>
+            </section>
+        </main>
+
+        <footer>
+            <p>✨Semoga bahagia selalu ✨</p>
+        </footer>
+    </div>
+
+    <audio id="music" loop>
+        <source src="music/Proses_Yang_Indah-Baju_Baja_Lirycs.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script src="script.js"></script>
+</body>
+</html>
