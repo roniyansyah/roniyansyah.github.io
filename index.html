@@ -36,7 +36,7 @@
     <p class="hero__tagline">Penulis &amp; Pengusaha — satu pintu menuju karya, kerja, bisnis, dan kontribusi.</p>
 
     <div class="hero__cta">
-      <a class="btn btn--whatsapp" href="https://wa.me/6289531388070" target="_blank" rel="noopener" data-todo="isi nomor WhatsApp aktif">
+      <a class="btn btn--whatsapp" href="https://wa.me/6289531388070" target="_blank" rel="noopener">
         <i class="ri-whatsapp-line"></i><span>WhatsApp</span>
       </a>
       <a class="btn btn--linkedin" href="https://www.linkedin.com/in/roniyansyah/" target="_blank" rel="noopener">
@@ -50,23 +50,35 @@
 <main class="main container">
 
   <!-- TAB NAV -->
-  <nav class="tabs" aria-label="Navigasi bagian">
-    <button class="tabs__btn is-active" data-target="personal">
-      <i class="ri-user-smile-line"></i><span>Personal</span>
+  <div class="tabs__wrap">
+    <button class="tabs__arrow tabs__arrow--prev" id="tabPrev" aria-label="Geser ke kiri" hidden>
+      <i class="ri-arrow-left-s-line"></i>
     </button>
-    <button class="tabs__btn" data-target="working">
-      <i class="ri-briefcase-line"></i><span>Working Hub</span>
+
+    <div class="tabs__viewport">
+      <nav class="tabs" id="tabsList" aria-label="Navigasi bagian">
+        <button class="tabs__btn is-active" data-target="personal">
+          <i class="ri-user-smile-line"></i><span>Personal</span>
+        </button>
+        <button class="tabs__btn" data-target="working">
+          <i class="ri-briefcase-line"></i><span>Working Hub</span>
+        </button>
+        <button class="tabs__btn" data-target="business">
+          <i class="ri-store-2-line"></i><span>Business</span>
+        </button>
+        <button class="tabs__btn" data-target="community">
+          <i class="ri-team-line"></i><span>Community</span>
+        </button>
+        <button class="tabs__btn" data-target="organization">
+          <i class="ri-government-line"></i><span>Organization</span>
+        </button>
+      </nav>
+    </div>
+
+    <button class="tabs__arrow tabs__arrow--next" id="tabNext" aria-label="Geser ke kanan" hidden>
+      <i class="ri-arrow-right-s-line"></i>
     </button>
-    <button class="tabs__btn" data-target="business">
-      <i class="ri-store-2-line"></i><span>Business</span>
-    </button>
-    <button class="tabs__btn" data-target="community">
-      <i class="ri-team-line"></i><span>Community</span>
-    </button>
-    <button class="tabs__btn" data-target="organization">
-      <i class="ri-government-line"></i><span>Organization</span>
-    </button>
-  </nav>
+  </div>
 
   <!-- ======= PART 1 — PERSONAL ======= -->
   <section class="panel is-active" id="personal">
