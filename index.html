@@ -13,27 +13,36 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body data-accent="personal">
 
+<div class="accent-bar"></div>
 <i class="ri-moon-line change-theme" id="theme-button" title="Ganti tema"></i>
 
 <!--=============== HERO / PROFIL ===============-->
 <header class="hero">
   <div class="hero__container">
+
+    <!-- Foto profil: struktur sederhana seperti kode awal, glow biru sebagai latar -->
     <div class="hero__avatar">
-      <img src="assets/img/perfil.png" alt="Foto Roniyansyah">
+      <div class="profile__border">
+        <div class="profile__perfil">
+          <img src="assets/img/perfil.png" alt="Foto Roniyansyah">
+        </div>
+      </div>
     </div>
+
     <p class="hero__eyebrow">Aturkata Hub</p>
     <h1 class="hero__name">Roniyansyah</h1>
     <p class="hero__tagline">Penulis &amp; Pengusaha — satu pintu menuju karya, kerja, bisnis, dan kontribusi.</p>
 
-    <ul class="hero__social">
-      <li><a href="https://www.instagram.com/txt.roni" target="_blank" rel="noopener" aria-label="Instagram txt.roni"><i class="ri-instagram-line"></i></a></li>
-      <li><a href="https://www.instagram.com/aturkata.roni" target="_blank" rel="noopener" aria-label="Instagram aturkata.roni"><i class="ri-instagram-fill"></i></a></li>
-      <li><a href="https://www.linkedin.com/in/roniyansyah/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="ri-linkedin-fill"></i></a></li>
-      <li><a href="https://github.com/roniyansyah/" target="_blank" rel="noopener" aria-label="GitHub"><i class="ri-github-fill"></i></a></li>
-      <li><a href="#" target="_blank" rel="noopener" aria-label="YouTube" data-todo="isi link channel YouTube"><i class="ri-youtube-fill"></i></a></li>
-    </ul>
+    <div class="hero__cta">
+      <a class="btn btn--whatsapp" href="https://wa.me/62xxxxxxxxxx" target="_blank" rel="noopener" data-todo="isi nomor WhatsApp aktif">
+        <i class="ri-whatsapp-line"></i><span>WhatsApp</span>
+      </a>
+      <a class="btn btn--linkedin" href="https://www.linkedin.com/in/roniyansyah/" target="_blank" rel="noopener">
+        <i class="ri-linkedin-fill"></i><span>LinkedIn</span>
+      </a>
+    </div>
   </div>
 </header>
 
@@ -60,121 +69,177 @@
   </nav>
 
   <!-- ======= PART 1 — PERSONAL ======= -->
-  <section class="panel is-active" id="personal" data-accent="personal">
+  <section class="panel is-active" id="personal">
+    <span class="panel__tag">Personal</span>
     <p class="panel__desc">Karya dan jejak pribadi — tulisan, dokumentasi, dan koneksi profesional.</p>
     <div class="cards">
       <a class="card" href="https://roni.aturkata.my.id" target="_blank" rel="noopener">
-        <i class="ri-id-card-line card__icon"></i>
-        <div><h3>CV Digital</h3><p>roni.aturkata.my.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="CV Digital"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">CV Digital</span>
+          <h3 class="card__title">roni.aturkata.my.id</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://blog.aturkata.my.id" target="_blank" rel="noopener">
-        <i class="ri-quill-pen-line card__icon"></i>
-        <div><h3>Blog Dokumentasi</h3><p>blog.aturkata.my.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Blog Dokumentasi"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Blog Dokumentasi</span>
+          <h3 class="card__title">blog.aturkata.my.id</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://www.instagram.com/txt.roni" target="_blank" rel="noopener">
-        <i class="ri-instagram-line card__icon"></i>
-        <div><h3>Instagram — txt.roni</h3><p>Dokumentasi &amp; kegiatan</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="Instagram txt.roni"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Instagram</span>
+          <h3 class="card__title">txt.roni — Dokumentasi &amp; kegiatan</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://www.instagram.com/aturkata.roni" target="_blank" rel="noopener">
-        <i class="ri-instagram-fill card__icon"></i>
-        <div><h3>Instagram — aturkata.roni</h3><p>Branding &amp; produk</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Instagram aturkata.roni"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Instagram</span>
+          <h3 class="card__title">aturkata.roni — Branding &amp; produk</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://www.linkedin.com/in/roniyansyah/" target="_blank" rel="noopener">
-        <i class="ri-linkedin-fill card__icon"></i>
-        <div><h3>LinkedIn</h3><p>Jejaring profesional</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="LinkedIn"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">LinkedIn</span>
+          <h3 class="card__title">Jejaring profesional</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="#" target="_blank" rel="noopener" data-todo="isi link channel YouTube">
-        <i class="ri-youtube-fill card__icon"></i>
-        <div><h3>YouTube Channel</h3><p>⚠️ Lengkapi link</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="YouTube"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">YouTube</span>
+          <h3 class="card__title">⚠️ Lengkapi link channel</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://github.com/roniyansyah/" target="_blank" rel="noopener">
-        <i class="ri-github-fill card__icon"></i>
-        <div><h3>GitHub</h3><p>Repository &amp; project</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="GitHub"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">GitHub</span>
+          <h3 class="card__title">Repository &amp; project</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
     </div>
   </section>
 
   <!-- ======= PART 2 — WORKING HUB ======= -->
-  <section class="panel" id="working" data-accent="working">
+  <section class="panel" id="working">
+    <span class="panel__tag">Working Hub</span>
     <p class="panel__desc">Akses ke unit kerja dan lembaga pendidikan yang dikelola.</p>
     <div class="cards">
-      <a class="card" href="/m4b/" >
-        <i class="ri-graduation-cap-line card__icon"></i>
-        <div><h3>M4B Learning Hub</h3><p>aturkata.my.id/m4b</p></div>
-        <i class="ri-arrow-right-line card__go"></i>
+      <a class="card" href="/m4b/">
+        <div class="card__image"><img src="assets/img/project1.webp" alt="M4B Learning Hub"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Working Hub</span>
+          <h3 class="card__title">M4B Learning Hub</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-line"></i></span>
       </a>
       <a class="card" href="/bimbel-ss/" data-todo="buat folder bimbel-ss di repo">
-        <i class="ri-book-open-line card__icon"></i>
-        <div><h3>Bimbel Science Society</h3><p>⚠️ Folder belum dibuat</p></div>
-        <i class="ri-arrow-right-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Bimbel Science Society"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Working Hub</span>
+          <h3 class="card__title">Bimbel Science Society ⚠️</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-line"></i></span>
       </a>
       <a class="card" href="/almadani/">
-        <i class="ri-building-2-line card__icon"></i>
-        <div><h3>Al Madani</h3><p>aturkata.my.id/almadani</p></div>
-        <i class="ri-arrow-right-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="Al Madani"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Working Hub</span>
+          <h3 class="card__title">Al Madani</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-line"></i></span>
       </a>
     </div>
   </section>
 
   <!-- ======= PART 3 — BUSINESS ======= -->
-  <section class="panel" id="business" data-accent="business">
+  <section class="panel" id="business">
+    <span class="panel__tag">Business</span>
     <p class="panel__desc">Lini bisnis dan produk yang sedang dijalankan.</p>
     <div class="cards">
       <a class="card" href="http://arkanin.my.id/" target="_blank" rel="noopener">
-        <i class="ri-shopping-bag-3-line card__icon"></i>
-        <div><h3>Arkanin</h3><p>arkanin.my.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Arkanin"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Business</span>
+          <h3 class="card__title">Arkanin</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://priset.web.app/" target="_blank" rel="noopener">
-        <i class="ri-shopping-bag-3-line card__icon"></i>
-        <div><h3>Priset</h3><p>priset.web.app</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="Priset"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Business</span>
+          <h3 class="card__title">Priset</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://kreachi.my.id/" target="_blank" rel="noopener">
-        <i class="ri-shopping-bag-3-line card__icon"></i>
-        <div><h3>Kreachi</h3><p>kreachi.my.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Kreachi"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Business</span>
+          <h3 class="card__title">Kreachi</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
     </div>
   </section>
 
   <!-- ======= PART 4 — COMMUNITY ======= -->
-  <section class="panel" id="community" data-accent="community">
+  <section class="panel" id="community">
+    <span class="panel__tag">Community</span>
     <p class="panel__desc">Kontribusi sosial melalui berbagai komunitas.</p>
     <div class="cards">
       <a class="card" href="https://wikimedia.or.id" target="_blank" rel="noopener">
-        <i class="ri-global-line card__icon"></i>
-        <div><h3>Wikimedia Indonesia</h3><p>wikimedia.or.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="Wikimedia Indonesia"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Community</span>
+          <h3 class="card__title">Wikimedia Indonesia</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="http://inspiralova.id/" target="_blank" rel="noopener">
-        <i class="ri-heart-line card__icon"></i>
-        <div><h3>Inspiralova</h3><p>inspiralova.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Inspiralova"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Community</span>
+          <h3 class="card__title">Inspiralova</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
       <a class="card" href="https://ruangdiskusi.id" target="_blank" rel="noopener">
-        <i class="ri-discuss-line card__icon"></i>
-        <div><h3>Ruang Diskusi</h3><p>ruangdiskusi.id</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project1.webp" alt="Ruang Diskusi"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Community</span>
+          <h3 class="card__title">Ruang Diskusi</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
     </div>
   </section>
 
   <!-- ======= PART 5 — ORGANIZATION ======= -->
-  <section class="panel" id="organization" data-accent="organization">
+  <section class="panel" id="organization">
+    <span class="panel__tag">Organization</span>
     <p class="panel__desc">Keterlibatan dalam organisasi profesi.</p>
     <div class="cards">
       <a class="card" href="https://profesionalmuda.miti.or.id/teknologi/" target="_blank" rel="noopener">
-        <i class="ri-government-line card__icon"></i>
-        <div><h3>Profesional Muda MITI</h3><p>Bidang Teknologi</p></div>
-        <i class="ri-arrow-right-up-line card__go"></i>
+        <div class="card__image"><img src="assets/img/project3.png" alt="Profesional Muda MITI"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Organization</span>
+          <h3 class="card__title">Profesional Muda MITI — Teknologi</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
       </a>
     </div>
   </section>
