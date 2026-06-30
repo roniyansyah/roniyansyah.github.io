@@ -4,34 +4,22 @@ document.getElementById('year').textContent = new Date().getFullYear();
 /*=============== TAB SWITCHING ===============*/
 const tabButtons = document.querySelectorAll('.tabs__btn');
 const panels = document.querySelectorAll('.panel');
-const accentMap = {
-  personal: 'var(--accent-personal)',
-  working: 'var(--accent-working)',
-  business: 'var(--accent-business)',
-  community: 'var(--accent-community)',
-  organization: 'var(--accent-organization)'
-};
+const body = document.body;
 
 function activateTab(target){
   tabButtons.forEach(btn => {
-    const isActive = btn.dataset.target === target;
-    btn.classList.toggle('is-active', isActive);
-    btn.style.setProperty('--tab-accent', accentMap[btn.dataset.target]);
+    btn.classList.toggle('is-active', btn.dataset.target === target);
   });
   panels.forEach(panel => {
     panel.classList.toggle('is-active', panel.id === target);
   });
-  // scroll active tab into view on mobile
-  const activeBtn = document.querySelector(`.tabs__btn[data-target="${target}"]`);
-  activeBtn?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  // ganti tema warna keseluruhan halaman mengikuti tab aktif
+  body.setAttribute('data-accent', target);
 }
 
 tabButtons.forEach(btn => {
   btn.addEventListener('click', () => activateTab(btn.dataset.target));
 });
-
-// set initial accent colors
-tabButtons.forEach(btn => btn.style.setProperty('--tab-accent', accentMap[btn.dataset.target]));
 
 /*=============== DEEP LINK VIA HASH (#working dll) ===============*/
 const initialHash = window.location.hash.replace('#', '');
@@ -39,7 +27,7 @@ if (initialHash && document.getElementById(initialHash)) {
   activateTab(initialHash);
 }
 
-/*=============== THEME TOGGLE ===============*/
+/*=============== THEME TOGGLE (terang/gelap) ===============*/
 const themeButton = document.getElementById('theme-button');
 const root = document.documentElement;
 const savedTheme = localStorage.getItem('aturkata-theme');
@@ -63,7 +51,7 @@ themeButton.addEventListener('click', () => {
   localStorage.setItem('aturkata-theme', next);
 });
 
-/*=============== PERINGATAN LINK BELUM DIISI (khusus saat development) ===============*/
+/*=============== PERINGATAN LINK BELUM DIISI ===============*/
 document.querySelectorAll('[data-todo]').forEach(el => {
   el.addEventListener('click', (e) => {
     if (el.getAttribute('href') === '#') {
