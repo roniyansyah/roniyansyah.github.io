@@ -143,27 +143,18 @@ a{ text-decoration:none; color:inherit; }
 }
 [data-theme="light"] .hero__avatar::before{ opacity: .3; }
 
-.profile__border {
-  border: 3.5px solid var(--first-color);
-  justify-self: center;
-  width: 115px;
-  height: 115px;
+.profile__border{
+  width: 100%; height: 100%;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
-  margin-bottom: .75rem;
+  padding: 3px;
+  background: var(--bg-elevated);
+  border: 2px solid var(--border);
 }
-.profile__perfil {
-  width: 100px;
-  height: 100px;
-  background: linear-gradient(180deg, 
-              hsla(var(--hue), var(--sat), var(--lig), 1) 0%, 
-              hsla(var(--hue), var(--sat), var(--lig), .2) 100%);
+.profile__perfil{
+  width: 100%; height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  background: var(--bg-elevated);
 }
 .profile__perfil img{ width:100%; height:100%; object-fit: cover; display:block; }
 
