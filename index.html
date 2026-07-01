@@ -54,8 +54,14 @@
    <div class="tabs__wrap">
       <div class="tabs__viewport">
       <nav class="tabs" id="tabsList" aria-label="Navigasi bagian">
+        <button class="tabs__btn" data-target="about">
+          <i class="ri-information-line"></i><span>About Us</span>
+        </button>
         <button class="tabs__btn is-active" data-target="personal">
           <i class="ri-user-smile-line"></i><span>Personal</span>
+        </button>
+        <button class="tabs__btn" data-target="creation">
+          <i class="ri-magic-line"></i><span>Creation</span>
         </button>
         <button class="tabs__btn" data-target="working">
           <i class="ri-briefcase-line"></i><span>Working Hub</span>
@@ -74,7 +80,23 @@
   </div>
   </div>
 
-  <!-- ======= PART 1 — PERSONAL ======= -->
+  <!-- ======= PART 1 — About Us ======= -->
+  <section class="panel" id="about">
+    <span class="panel__tag">About Us</span>
+    <p class="panel__desc">Tentang kami dan visi misi.</p>
+    <div class="cards">
+      <a class="card" href="https://profesionalmuda.miti.or.id/teknologi/" target="_blank" rel="noopener">
+        <div class="card__image"><img src="assets/img/project3.png" alt="Profesional Muda MITI"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Organization</span>
+          <h3 class="card__title">Profesional Muda MITI — Teknologi</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======= PART 2 — PERSONAL ======= -->
   <section class="panel is-active" id="personal">
     <span class="panel__tag">Personal</span>
     <p class="panel__desc">Karya dan jejak pribadi — tulisan, dokumentasi, dan koneksi profesional.</p>
@@ -138,10 +160,26 @@
     </div>
   </section>
 
-  <!-- ======= PART 2 — WORKING HUB ======= -->
+  <!-- ======= PART 3 — Creation ======= -->
+  <section class="panel" id="creation">
+    <span class="panel__tag">Creation</span>
+    <p class="panel__desc">Karya dan proyek yang sedang dan telah dibuat.</p>
+    <div class="cards">
+      <a class="card" href="https://profesionalmuda.miti.or.id/teknologi/" target="_blank" rel="noopener">
+        <div class="card__image"><img src="assets/img/project3.png" alt="Profesional Muda MITI"></div>
+        <div class="card__overlay">
+          <span class="card__subtitle">Organization</span>
+          <h3 class="card__title">Profesional Muda MITI — Teknologi</h3>
+        </div>
+        <span class="card__link"><i class="ri-arrow-right-up-line"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ======= PART 4 — WORKING HUB ======= -->
   <section class="panel" id="working">
     <span class="panel__tag">Working Hub</span>
-    <p class="panel__desc">Akses ke unit kerja dan lembaga pendidikan yang dikelola.</p>
+    <p class="panel__desc">Akses ke unit kerja dan lembaga yang terkait.</p>
     <div class="cards">
       <a class="card" href="/m4b/">
         <div class="card__image"><img src="assets/img/project1.webp" alt="M4B Learning Hub"></div>
@@ -170,7 +208,7 @@
     </div>
   </section>
 
-  <!-- ======= PART 3 — BUSINESS ======= -->
+  <!-- ======= PART 5 — BUSINESS ======= -->
   <section class="panel" id="business">
     <span class="panel__tag">Business</span>
     <p class="panel__desc">Lini bisnis dan produk yang sedang dijalankan.</p>
@@ -202,7 +240,7 @@
     </div>
   </section>
 
-  <!-- ======= PART 4 — COMMUNITY ======= -->
+  <!-- ======= PART 6 — COMMUNITY ======= -->
   <section class="panel" id="community">
     <span class="panel__tag">Community</span>
     <p class="panel__desc">Kontribusi sosial melalui berbagai komunitas.</p>
@@ -234,7 +272,7 @@
     </div>
   </section>
 
-  <!-- ======= PART 5 — ORGANIZATION ======= -->
+  <!-- ======= PART 7 — ORGANIZATION ======= -->
   <section class="panel" id="organization">
     <span class="panel__tag">Organization</span>
     <p class="panel__desc">Keterlibatan dalam organisasi profesi.</p>

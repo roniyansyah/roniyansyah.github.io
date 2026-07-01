@@ -6,11 +6,13 @@
   --text-muted: #9CA0AA;
   --border: #2A2E37;
 
-  --accent-personal: #D9A441;
-  --accent-working: #5B8C5A;
-  --accent-business: #C1542C;
-  --accent-community: #3F8FB0;
-  --accent-organization: #8B6FC9;
+  --accent-about: #5C6BC0;          /* Biru Indigo - Kepercayaan, informasi */
+  --accent-personal: #43A047;       /* Hijau - Pertumbuhan, kesehatan, pribadi */
+  --accent-creation: #F9A825;       /* Amber - Kreativitas, inspirasi */
+  --accent-working: #546E7A;        /* Blue Grey - Fokus, profesional */
+  --accent-business: #D84315;       /* Deep Orange - Ambisi, aksi, keuntungan */
+  --accent-community: #26A69A;      /* Teal - Kolaborasi, komunikasi */
+  --accent-organization: #7E57C2;   /* Ungu - Struktur, perencanaan, kebijaksanaan */
 
   --blue-aura: #3B82F6;
 
@@ -32,6 +34,8 @@
 
 /*=============== ACCENT PER TAB ===============*/
 body[data-accent="personal"]{ --accent-current: var(--accent-personal); }
+body[data-accent="about"]{ --accent-current: var(--accent-about); }
+body[data-accent="creation"]{ --accent-current: var(--accent-creation); }
 body[data-accent="working"]{ --accent-current: var(--accent-working); }
 body[data-accent="business"]{ --accent-current: var(--accent-business); }
 body[data-accent="community"]{ --accent-current: var(--accent-community); }
