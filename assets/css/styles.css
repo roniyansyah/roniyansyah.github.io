@@ -1,392 +1,110 @@
-/*=============== VARIABLES ===============*/
-:root{
-  --bg: #14161A;
-  --bg-elevated: #1C1F25;
-  --text: #ECE7DA;
-  --text-muted: #9CA0AA;
-  --border: #2A2E37;
+/*=============== TAHUN FOOTER ===============*/
+document.getElementById('year').textContent = new Date().getFullYear();
 
-  --accent-personal: #D9A441;
-  --accent-working: #5B8C5A;
-  --accent-business: #C1542C;
-  --accent-community: #3F8FB0;
-  --accent-organization: #8B6FC9;
+/*=============== TAB SWITCHING + GESER VIA PANAH (tanpa scroll) ===============*/
+const tabsList   = document.getElementById('tabsList');
+const tabsViewport = document.querySelector('.tabs__viewport');
+const prevBtn    = document.getElementById('tabPrev');
+const nextBtn    = document.getElementById('tabNext');
+const tabButtons = document.querySelectorAll('.tabs__btn');
+const panels     = document.querySelectorAll('.panel');
+const body       = document.body;
 
-  --blue-aura: #3B82F6;
+let offset = 0; // posisi geser tabsList saat ini (px, selalu <= 0)
 
-  --font-display: "Fraunces", serif;
-  --font-body: "Plus Jakarta Sans", sans-serif;
+function updateArrows(){
+  const maxOffset = Math.max(0, tabsList.scrollWidth - tabsViewport.clientWidth);
+  offset = Math.min(Math.max(offset, -maxOffset), 0);
+  tabsList.style.transform = `translateX(${offset}px)`;
 
-  --radius: 14px;
-  --transition: .25s ease;
-  --transition-slow: .5s ease;
+  const overflowing = maxOffset > 0;
+  prevBtn.hidden = !overflowing || offset >= 0;
+  nextBtn.hidden = !overflowing || offset <= -maxOffset;
 }
 
-[data-theme="light"]{
-  --bg: #F6F2E8;
-  --bg-elevated: #FFFFFF;
-  --text: #1B1B1B;
-  --text-muted: #6B6B6B;
-  --border: #E4DECE;
+function shiftTabs(direction){
+  const step = 130; // jarak geser per klik panah (px)
+  offset += direction === 'next' ? -step : step;
+  updateArrows();
 }
 
-/*=============== ACCENT PER TAB ===============*/
-body[data-accent="personal"]{ --accent-current: var(--accent-personal); }
-body[data-accent="working"]{ --accent-current: var(--accent-working); }
-body[data-accent="business"]{ --accent-current: var(--accent-business); }
-body[data-accent="community"]{ --accent-current: var(--accent-community); }
-body[data-accent="organization"]{ --accent-current: var(--accent-organization); }
-
-*{ margin:0; padding:0; box-sizing:border-box; }
-
-html{ scroll-behavior: smooth; }
-
-body{
-  position: relative;
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font-body);
-  transition: background var(--transition-slow), color var(--transition-slow);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+function bringActiveIntoView(btn){
+  const viewportRect = tabsViewport.getBoundingClientRect();
+  const btnRect = btn.getBoundingClientRect();
+  if (btnRect.left < viewportRect.left) {
+    offset += (viewportRect.left - btnRect.left) + 8;
+  } else if (btnRect.right > viewportRect.right) {
+    offset -= (btnRect.right - viewportRect.right) + 8;
+  }
+  updateArrows();
 }
 
-::selection{ background: var(--accent-current); color: #fff; }
+function activateTab(target){
+  tabButtons.forEach(btn => {
+    btn.classList.toggle('is-active', btn.dataset.target === target);
+  });
+  panels.forEach(panel => {
+    panel.classList.toggle('is-active', panel.id === target);
+  });
+  body.setAttribute('data-accent', target);
 
-/* strip warna tipis di atas — penanda paling jelas bahwa tema berubah */
-.accent-bar{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--accent-current), color-mix(in srgb, var(--accent-current) 40%, white));
-  z-index: 60;
-  transition: background var(--transition-slow);
-}
-
-/* mesh gradient ambient — dua blob besar yang ikut berubah warna & "bernapas" */
-body::before, body::after{
-  content: "";
-  position: fixed;
-  z-index: -1;
-  border-radius: 50%;
-  filter: blur(70px);
-  transition: background var(--transition-slow), opacity var(--transition-slow);
-  animation: drift 14s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-body::before{
-  width: 560px; height: 560px;
-  top: -180px; left: 50%;
-  transform: translateX(-50%);
-  background: color-mix(in srgb, var(--accent-current) 38%, transparent);
-  opacity: .55;
-}
-body::after{
-  width: 420px; height: 420px;
-  bottom: -160px; right: -100px;
-  background: color-mix(in srgb, var(--accent-current) 28%, transparent);
-  opacity: .4;
-  animation-duration: 18s;
-  animation-direction: alternate-reverse;
-}
-[data-theme="light"] body::before{ opacity: .35; }
-[data-theme="light"] body::after{ opacity: .25; }
-
-@keyframes drift{
-  from{ transform: translate(-50%, 0) scale(1); }
-  to{ transform: translate(-46%, 30px) scale(1.08); }
+  // tunggu animasi lebar tab aktif selesai, lalu hitung ulang & pastikan tab aktif terlihat
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      updateArrows();
+      const activeBtn = document.querySelector(`.tabs__btn[data-target="${target}"]`);
+      if (activeBtn) bringActiveIntoView(activeBtn);
+    }, 260);
+  });
 }
 
-a{ text-decoration:none; color:inherit; }
+tabButtons.forEach(btn => {
+  btn.addEventListener('click', () => activateTab(btn.dataset.target));
+});
 
-.container{ max-width: 980px; margin-inline:auto; padding-inline: 1.5rem; }
+prevBtn.addEventListener('click', () => shiftTabs('prev'));
+nextBtn.addEventListener('click', () => shiftTabs('next'));
 
-/*=============== THEME BUTTON ===============*/
-.change-theme{
-  position: fixed;
-  top: 1.25rem; right: 1.25rem;
-  font-size: 1.25rem;
-  cursor: pointer;
-  z-index: 50;
-  color: var(--text-muted);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  width: 42px; height: 42px;
-  border-radius: 50%;
-  display: flex; align-items:center; justify-content:center;
-  transition: var(--transition);
-}
-.change-theme:hover{ color: var(--accent-current); border-color: var(--accent-current); }
+window.addEventListener('resize', updateArrows);
+window.addEventListener('load', updateArrows);
+updateArrows();
 
-/*=============== HERO ===============*/
-.hero{
-  padding: 4.5rem 1.5rem 2.5rem;
-  text-align: center;
-}
-.hero__container{ max-width: 480px; margin-inline: auto; }
-
-/* Foto profil — struktur sederhana, glow biru sebagai latar (bukan ring) */
-.hero__avatar{
-  position: relative;
-  width: 100px; height: 100px;
-  margin: 0 auto 1.25rem;
-}
-.hero__avatar::before{
-  content: "";
-  position: absolute;
-  inset: -34px;
-  background: radial-gradient(circle, var(--blue-aura) 0%, transparent 70%);
-  filter: blur(22px);
-  opacity: .55;
-  z-index: -1;
-  transition: opacity var(--transition-slow);
-}
-[data-theme="light"] .hero__avatar::before{ opacity: .3; }
-
-.profile__border{
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  padding: 3px;
-  background: var(--bg-elevated);
-  border: 2px solid var(--border);
-}
-.profile__perfil{
-  width: 100%; height: 100%;
-  border-radius: 50%;
-  overflow: hidden;
-  background: var(--bg-elevated);
-}
-.profile__perfil img{ width:100%; height:100%; object-fit: cover; display:block; }
-
-.hero__eyebrow{
-  font-size: .72rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--accent-current);
-  font-weight: 600;
-  margin-bottom: .5rem;
-  transition: color var(--transition-slow);
+/*=============== DEEP LINK VIA HASH (#working dll) ===============*/
+const initialHash = window.location.hash.replace('#', '');
+if (initialHash && document.getElementById(initialHash)) {
+  activateTab(initialHash);
 }
 
-.hero__name{
-  font-family: var(--font-display);
-  font-size: clamp(1.9rem, 5vw, 2.6rem);
-  font-weight: 600;
-  margin-bottom: .5rem;
+/*=============== THEME TOGGLE (terang/gelap) ===============*/
+const themeButton = document.getElementById('theme-button');
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('aturkata-theme');
+
+function applyTheme(theme){
+  if (theme === 'light') {
+    root.setAttribute('data-theme', 'light');
+    themeButton.classList.replace('ri-moon-line', 'ri-sun-line');
+  } else {
+    root.removeAttribute('data-theme');
+    themeButton.classList.replace('ri-sun-line', 'ri-moon-line');
+  }
 }
 
-.hero__tagline{
-  color: var(--text-muted);
-  font-size: .95rem;
-  line-height: 1.5;
-  max-width: 380px;
-  margin-inline: auto;
-}
+applyTheme(savedTheme || 'dark');
 
-/*=============== CTA: WhatsApp & LinkedIn ===============*/
-.hero__cta{
-  display: flex;
-  justify-content: center;
-  gap: .75rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap;
-}
-.btn{
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  padding: .75rem 1.35rem;
-  border-radius: 14px;
-  color: #fff;
-  font-weight: 600;
-  font-size: .88rem;
-  transition: var(--transition);
-}
-.btn i{ font-size: 1.1rem; }
-.btn--whatsapp{ background: #25D366; }
-.btn--whatsapp:hover{ background: #1FBE5B; transform: translateY(-2px); }
-.btn--linkedin{ background: #0A66C2; }
-.btn--linkedin:hover{ background: #0958A8; transform: translateY(-2px); }
+themeButton.addEventListener('click', () => {
+  const isLight = root.getAttribute('data-theme') === 'light';
+  const next = isLight ? 'dark' : 'light';
+  applyTheme(next);
+  localStorage.setItem('aturkata-theme', next);
+});
 
-/*=============== TABS (icon -> expand jadi icon+label) ===============*/
-.tabs{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: .5rem;
-  margin-bottom: 1.5rem;
-}
-
-.tabs__btn{
-  flex: 0 0 auto;
-  display: flex; align-items:center;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-  font-family: var(--font-body);
-  font-size: .85rem;
-  font-weight: 600;
-  height: 44px;
-  width: 44px;
-  border-radius: 22px;
-  cursor: pointer;
-  overflow: hidden;
-  transition: width var(--transition), background var(--transition), color var(--transition), border-color var(--transition);
-}
-.tabs__btn i{
-  font-size: 1.1rem;
-  flex: 0 0 44px;
-  display: flex; align-items:center; justify-content:center;
-}
-.tabs__btn span{
-  max-width: 0;
-  opacity: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  transition: max-width var(--transition), opacity var(--transition);
-}
-
-.tabs__btn:hover{ color: var(--accent-current); border-color: var(--accent-current); }
-
-.tabs__btn.is-active{
-  width: 168px;
-  background: var(--accent-current);
-  border-color: var(--accent-current);
-  color: #ffffff;
-}
-.tabs__btn.is-active span{
-  max-width: 140px;
-  opacity: 1;
-  padding-right: .9rem;
-}
-
-@media (max-width: 460px){
-  .tabs__btn.is-active{ width: 150px; }
-}
-
-/*=============== PANELS ===============*/
-.panel{ display: none; animation: fadeIn .35s ease; }
-.panel.is-active{ display: block; }
-
-@keyframes fadeIn{
-  from{ opacity: 0; transform: translateY(6px); }
-  to{ opacity: 1; transform: translateY(0); }
-}
-
-.panel__tag{
-  display: inline-block;
-  font-size: .68rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: #fff;
-  background: var(--accent-current);
-  padding: .3rem .7rem;
-  border-radius: 999px;
-  margin-bottom: .65rem;
-  transition: background var(--transition-slow);
-}
-
-.panel__desc{
-  color: var(--text-muted);
-  font-size: .9rem;
-  margin-bottom: 1.25rem;
-}
-
-/*=============== CARDS ===============*/
-.cards{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: .85rem;
-}
-
-.card{
-  position: relative;
-  display: block;
-  aspect-ratio: 4 / 3;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
-}
-.card:hover{
-  border-color: var(--accent-current);
-  transform: translateY(-4px);
-  box-shadow: 0 14px 30px -16px color-mix(in srgb, var(--accent-current) 60%, black 20%);
-}
-
-.card__image{
-  position: absolute;
-  inset: 0;
-  background: var(--bg-elevated);
-}
-.card__image img{
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .45s ease;
-}
-.card:hover .card__image img{ transform: scale(1.08); }
-
-.card__overlay{
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 1rem 1rem .9rem;
-  background: linear-gradient(to top, rgba(0,0,0,.8) 10%, rgba(0,0,0,0) 80%);
-}
-
-.card__subtitle{
-  display: block;
-  font-size: .66rem;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  font-weight: 700;
-  color: var(--accent-current);
-  margin-bottom: .25rem;
-  transition: color var(--transition-slow);
-}
-
-.card__title{
-  font-size: .92rem;
-  font-weight: 600;
-  color: #ffffff;
-  line-height: 1.3;
-}
-
-.card__link{
-  position: absolute;
-  top: .6rem; right: .6rem;
-  width: 32px; height: 32px;
-  border-radius: 50%;
-  display: flex; align-items:center; justify-content:center;
-  background: var(--accent-current);
-  color: #ffffff;
-  font-size: 1rem;
-  transition: background var(--transition-slow);
-}
-
-/*=============== FOOTER ===============*/
-.footer{
-  text-align: center;
-  padding: 2.5rem 1.5rem 3rem;
-  color: var(--text-muted);
-  font-size: .8rem;
-}
-
-/*=============== RESPONSIVE ===============*/
-@media (max-width: 560px){
-  .cards{ grid-template-columns: 1fr 1fr; gap: .6rem; }
-  .hero{ padding-top: 3.5rem; }
-  .tabs{ gap: .4rem; }
-  body::before{ width: 380px; height: 380px; }
-  body::after{ width: 280px; height: 280px; }
-}
-
-@media (max-width: 380px){
-  .cards{ grid-template-columns: 1fr; }
-}
-
-@media (min-width: 720px){
-  .cards{ grid-template-columns: repeat(3, 1fr); }
-}
+/*=============== PERINGATAN LINK BELUM DIISI ===============*/
+document.querySelectorAll('[data-todo]').forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (el.getAttribute('href') === '#') {
+      e.preventDefault();
+      console.warn('TODO:', el.dataset.todo);
+    }
+  });
+});
