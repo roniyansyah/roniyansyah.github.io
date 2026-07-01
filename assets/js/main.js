@@ -1,73 +1,40 @@
 /*=============== TAHUN FOOTER ===============*/
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/*=============== TAB SWITCHING + GESER VIA PANAH (tanpa scroll) ===============*/
-const tabsList   = document.getElementById('tabsList');
-const tabsViewport = document.querySelector('.tabs__viewport');
-const prevBtn    = document.getElementById('tabPrev');
-const nextBtn    = document.getElementById('tabNext');
+/*=============== TAB SWITCHING + HORIZONTAL SCROLL ===============*/
 const tabButtons = document.querySelectorAll('.tabs__btn');
-const panels     = document.querySelectorAll('.panel');
-const body       = document.body;
+const panels = document.querySelectorAll('.panel');
+const body = document.body;
 
-let offset = 0; // posisi geser tabsList saat ini (px, selalu <= 0)
-
-function updateArrows(){
-  const maxOffset = Math.max(0, tabsList.scrollWidth - tabsViewport.clientWidth);
-  offset = Math.min(Math.max(offset, -maxOffset), 0);
-  tabsList.style.transform = `translateX(${offset}px)`;
-
-  const overflowing = maxOffset > 0;
-  prevBtn.hidden = !overflowing || offset >= 0;
-  nextBtn.hidden = !overflowing || offset <= -maxOffset;
-}
-
-function shiftTabs(direction){
-  const step = 130; // jarak geser per klik panah (px)
-  offset += direction === 'next' ? -step : step;
-  updateArrows();
-}
-
-function bringActiveIntoView(btn){
-  const viewportRect = tabsViewport.getBoundingClientRect();
-  const btnRect = btn.getBoundingClientRect();
-  if (btnRect.left < viewportRect.left) {
-    offset += (viewportRect.left - btnRect.left) + 8;
-  } else if (btnRect.right > viewportRect.right) {
-    offset -= (btnRect.right - viewportRect.right) + 8;
-  }
-  updateArrows();
-}
-
-function activateTab(target){
+function activateTab(target) {
   tabButtons.forEach(btn => {
-    btn.classList.toggle('is-active', btn.dataset.target === target);
+    const active = btn.dataset.target === target;
+    btn.classList.toggle('is-active', active);
+
+    // Pastikan tab aktif selalu terlihat
+    if (active) {
+      setTimeout(() => {
+        btn.scrollIntoView({
+          behavior: "smooth",
+          inline: "center",
+          block: "nearest"
+        });
+      }, 200); // menunggu animasi lebar tombol selesai
+    }
   });
+
   panels.forEach(panel => {
     panel.classList.toggle('is-active', panel.id === target);
   });
-  body.setAttribute('data-accent', target);
 
-  // tunggu animasi lebar tab aktif selesai, lalu hitung ulang & pastikan tab aktif terlihat
-  requestAnimationFrame(() => {
-    setTimeout(() => {
-      updateArrows();
-      const activeBtn = document.querySelector(`.tabs__btn[data-target="${target}"]`);
-      if (activeBtn) bringActiveIntoView(activeBtn);
-    }, 260);
-  });
+  body.setAttribute('data-accent', target);
 }
 
 tabButtons.forEach(btn => {
-  btn.addEventListener('click', () => activateTab(btn.dataset.target));
+  btn.addEventListener('click', () => {
+    activateTab(btn.dataset.target);
+  });
 });
-
-prevBtn.addEventListener('click', () => shiftTabs('prev'));
-nextBtn.addEventListener('click', () => shiftTabs('next'));
-
-window.addEventListener('resize', updateArrows);
-window.addEventListener('load', updateArrows);
-updateArrows();
 
 /*=============== DEEP LINK VIA HASH (#working dll) ===============*/
 const initialHash = window.location.hash.replace('#', '');
