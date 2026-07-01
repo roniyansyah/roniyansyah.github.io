@@ -120,7 +120,7 @@ a{ text-decoration:none; color:inherit; }
 
 /*=============== HERO ===============*/
 .hero{
-  padding: 4.5rem 1.5rem 2.5rem;
+  padding: 4.5rem 1.5rem 0.5rem;
   text-align: center;
 }
 .hero__container{ max-width: 480px; margin-inline: auto; }
@@ -148,13 +148,13 @@ a{ text-decoration:none; color:inherit; }
   border-radius: 50%;
   padding: 3px;
   background: var(--bg-elevated);
-  border: 2px solid var(--border);
+  border: 2px solid solid #ffffff;
 }
 .profile__perfil{
   width: 100%; height: 100%;
   border-radius: 50%;
   overflow: hidden;
-  background: var(--bg-elevated);
+  background: linear-gradient(180deg, #ffffff, rgb(252, 252, 252), #00ff00);
 }
 .profile__perfil img{ width:100%; height:100%; object-fit: cover; display:block; }
 
@@ -208,19 +208,38 @@ a{ text-decoration:none; color:inherit; }
 .btn--linkedin{ background: #0A66C2; }
 .btn--linkedin:hover{ background: #0958A8; transform: translateY(-2px); }
 
+
+.garis-responsif {
+  /* Mengatur panjang garis sebesar 80% dari lebar layar */
+  width: 80%; 
+    /* Memastikan di layar lebar (laptop), panjangnya tidak kebablasan */
+      max-width: 600px; 
+    /* Membuat garis otomatis berada di tengah-tengah halaman */
+  margin: 20px auto; 
+    /* Opsional: Mengatur ketebalan dan warna garis */
+  border: none;
+  height: 2px;
+  background-color: color-mix(in srgb, var(--accent-current) 100%, white);
+}
+
 /*=============== TABS (1 baris, panah klik jika tidak muat) ===============*/
-.tabs__wrap{
+.tabs__wrap {
   display: flex;
   align-items: center;
+  justify-content: center; /* KUNCI 1: Membuat isi di dalamnya (panah + tabs) rata tengah */
   gap: .35rem;
-  margin-bottom: 1.5rem;
+  margin: 0 auto 1.5rem auto; /* KUNCI 2: Membuat seluruh komponen wrap berada di tengah halaman */
+    width: 100%;
+  max-width: max-content; /* KUNCI 3: Membantu agar pembungkus pas seukuran kontennya saat muat */
 }
 
 /* viewport = jendela yang menyembunyikan tab di luar batas, tanpa scroll */
-.tabs__viewport{
+.tabs__viewport {
   flex: 1 1 auto;
   overflow: hidden;
   min-width: 0;
+  display: flex;
+  justify-content: center; /* Menjaga .tabs tetap di tengah selama belum di-transform oleh JS */
 }
 
 .tabs{
