@@ -1,6 +1,6 @@
 // ================= 1. PWA SERVICE WORKER REGISTRATION =================
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js')
+    navigator.serviceWorker.register('/bimbelss/sw.js')
         .then(() => console.log("PWA: Service Worker Active"))
         .catch((err) => console.error("PWA: Error", err));
 }
