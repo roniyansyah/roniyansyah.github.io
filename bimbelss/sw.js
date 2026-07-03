@@ -1,10 +1,10 @@
-const CACHE_NAME = 'brain-arena-v1';
+const CACHE_NAME = 'brain-arena-v2'; // Naikkan versi ke v2 agar browser mendeteksi perubahan
 const ASSETS_TO_CACHE = [
-  './',
-  './index.html',
-  './styles.css',
-  './game.js',
-  './manifest.json'
+  '/bimbelss/',
+  '/bimbelss/index.html',
+  '/bimbelss/styles.css',
+  '/bimbelss/game.js',
+  '/bimbelss/manifest.json'
 ];
 
 self.addEventListener('install', (event) => {
