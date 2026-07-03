@@ -3,105 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Arena - Math & Memory</title>
-    <link rel="stylesheet" href="styles.css">
+
+    <title>Math Arena</title>
+
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
 
-    <div id="app">
-        <section id="screen-home" class="screen active">
-            <header>
-                <h1>Math Arena</h1>
-                <p>Latih otakmu setiap waktu!</p>
-            </header>
-            
-            <div class="menu-container">
-                <div class="card-game" onclick="navigateTo('screen-game1-materi')">
-                    <div class="icon">📊</div>
-                    <h3>1. Multiplication Table</h3>
-                    <p>Hafalan & latihan tabel perkalian 1-30.</p>
-                </div>
-                
-                <div class="card-game" onclick="openGameSettings(2)">
-                    <div class="icon">⚡</div>
-                    <h3>2. Count Training</h3>
-                    <p>Latihan penjumlahan, pengurangan, perkalian dan pembagian.</p>
-                </div>
-                
-                <div class="card-game" onclick="openGameSettings(3)">
-                    <div class="icon">📐</div>
-                    <h3>3. Squared Matching</h3>
-                    <p>Menjodohkan bilangan pangkat dua.</p>
-                </div>
-                
-                <div class="card-game" onclick="openGameSettings(4)">
-                    <div class="icon">🧠</div>
-                    <h3>4. Power Memories</h3>
-                    <p>Uji ingatan spasial dan visualmu.</p>
-                </div>
-                
-                <div class="card-game" onclick="openGameSettings(5)">
-                    <div class="icon">⚔️</div>
-                    <h3>5. Arena Battle</h3>
-                    <p>Duel 1 lawan 1 dalam satu layar HP/Tablet.</p>
-                </div>
+<div class="container">
+
+    <header class="hero">
+        <h1>🧠 Math Arena</h1>
+        <p>Latih kemampuan matematika dan daya ingatmu.</p>
+    </header>
+
+    <main class="games">
+
+        <a href="games/multiplication/index.html" class="game-card">
+            <span class="icon">📊</span>
+
+            <div class="info">
+                <h2>Multiplication Table</h2>
+                <p>Belajar dan menghafal tabel perkalian.</p>
             </div>
-        </section>
 
-        <section id="screen-game1-materi" class="screen">
-            <button class="btn-back" onclick="navigateTo('screen-home')">⬅ Kembali</button>
-            <h2>Pilih Tabel Perkalian</h2>
-            <div id="grid-perkalian" class="grid-numbers"></div>
-            
-            <div id="modal-tabel-detail" class="modal hidden">
-                <div class="modal-content">
-                    <h3 id="modal-title">Detail Perkalian</h3>
-                    <div id="modal-list-angka"></div>
-                    <div class="modal-actions">
-                        <button class="btn btn-primary" onclick="startGame1Setup('multiply')">Start Multiply</button>
-                        <button class="btn btn-secondary" onclick="startGame1Setup('division')">Start Division</button>
-                        <button class="btn btn-danger" onclick="closeModal()">Tutup</button>
-                    </div>
-                </div>
+            <span class="arrow">➜</span>
+        </a>
+
+        <a href="games/count-training/index.html" class="game-card">
+            <span class="icon">⚡</span>
+
+            <div class="info">
+                <h2>Count Training</h2>
+                <p>Latihan hitung cepat.</p>
             </div>
-        </section>
 
-        <section id="screen-settings" class="screen">
-            <button class="btn-back" onclick="backFromSettings()">⬅ Kembali</button>
-            <h2 id="settings-title">Pengaturan Game</h2>
-            
-            <form id="form-settings" onsubmit="event.preventDefault(); launchGame();">
-                <div id="dynamic-settings-fields"></div>
-                
-                <div class="setting-group">
-                    <label>Batas Waktu</label>
-                    <div class="flex-row">
-                        <input type="number" id="setting-duration" min="30" value="30" required inputmode="numeric">
-                        <span>Detik</span>
-                    </div>
-                    <small>*Minimal 30 detik</small>
-                </div>
+            <span class="arrow">➜</span>
+        </a>
 
-                <button type="submit" class="btn btn-start">MULAI BERMAIN 🚀</button>
-            </form>
-        </section>
+        <a href="games/squared-matching/index.html" class="game-card">
+            <span class="icon">📐</span>
 
-        <section id="screen-gameplay" class="screen">
-            <div id="gameplay-arena"></div>
-        </section>
-
-        <section id="screen-results" class="screen">
-            <h2>Permainan Selesai!</h2>
-            <div class="result-box">
-                <p>Skor Anda:</p>
-                <h1 id="result-score">0</h1>
-                <p id="result-details"></p>
+            <div class="info">
+                <h2>Squared Matching</h2>
+                <p>Cocokkan nilai dengan hasil pangkat dua.</p>
             </div>
-            <button class="btn btn-primary" onclick="navigateTo('screen-home')">Kembali ke Beranda</button>
-        </section>
-    </div>
 
-    <script src="game.js"></script>
+            <span class="arrow">➜</span>
+        </a>
+
+        <a href="games/power-memories/index.html" class="game-card">
+            <span class="icon">🧠</span>
+
+            <div class="info">
+                <h2>Power Memories</h2>
+                <p>Latihan daya ingat visual.</p>
+            </div>
+
+            <span class="arrow">➜</span>
+        </a>
+
+        <a href="games/arena-battle/index.html" class="game-card">
+            <span class="icon">⚔️</span>
+
+            <div class="info">
+                <h2>Arena Battle</h2>
+                <p>Bermain berdua dalam satu perangkat.</p>
+            </div>
+
+            <span class="arrow">➜</span>
+        </a>
+
+    </main>
+
+</div>
+
+<script src="js/index.js"></script>
+
 </body>
 </html>
