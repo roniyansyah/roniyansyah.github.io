@@ -1,7 +1,8 @@
 // ================= 1. PWA SERVICE WORKER REGISTRATION =================
+// Ganti bagian paling atas game.js dengan ini:
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/bimbelss/sw.js')
-        .then(() => console.log("PWA: Service Worker Active"))
+    navigator.serviceWorker.register('/bimbelss/sw.js', { scope: '/bimbelss/' })
+        .then(() => console.log("PWA: Service Worker Active di /bimbelss/"))
         .catch((err) => console.error("PWA: Error", err));
 }
 
