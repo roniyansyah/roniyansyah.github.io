@@ -415,6 +415,125 @@ a{ text-decoration:none; color:inherit; }
   font-size: 1rem;
   transition: background var(--transition-slow);
 }
+/*=============== ABOUT US ===============*/
+/* Container Utama */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Styling Elemen Klik (Details) */
+.about-item {
+  background-color: rgba(0, 0, 0, 0.02);
+  border-left: 4px solid #1a73e8; /* Garis aksen kiri */
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.about-item[open] {
+  background-color: rgba(0, 0, 0, 0.04);
+  padding-bottom: 0.5rem;
+}
+
+/* Bagian yang Dapat Diklik (Summary) */
+.about-item__summary {
+  padding: 1.2rem;
+  cursor: pointer;
+  list-style: none; /* Menghilangkan panah bawaan browser */
+  position: relative;
+}
+
+.about-item__summary::-webkit-details-marker {
+  display: none; /* Menghilangkan panah bawaan Safari */
+}
+
+.about-item__title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+.about-item__desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555;
+  margin-right: 2rem;
+}
+
+/* Petunjuk Klik Kecil di Kanan Bawah Item */
+.about-item__hint {
+  display: block;
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+  text-align: right;
+}
+
+/* Konten Penjelasan yang Muncul Saat Diklik */
+.about-item__details-content {
+  padding: 0 1.2rem 1.2rem 1.2rem;
+  border-top: 1px dashed #ddd;
+  margin-top: 0.5rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.about-item__details-content ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.about-item__details-content li {
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Pewarnaan Tautan Biru */
+.link-blue {
+  color: #1a73e8 !important;
+  text-decoration: underline !important;
+  font-weight: 500;
+}
+
+.link-blue:hover {
+  color: #0b57d0 !important;
+}
+
+/* Styling Keren untuk Bagian Quote Kesimpulan */
+.about-quote {
+  margin-top: 2.5rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(to right, #f4f8ff, #ffffff);
+  border-left: 5px solid #1a73e8;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 15px rgba(26, 115, 232, 0.08);
+  position: relative;
+}
+
+.about-quote p {
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: #2c3e50;
+  margin: 0;
+}
+
+/* Animasi Halus Saat Konten Terbuka */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 /*=============== FOOTER ===============*/
 .footer{

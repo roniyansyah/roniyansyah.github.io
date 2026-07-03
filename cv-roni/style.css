@@ -1,0 +1,300 @@
+/* RESET & BASE STYLES */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* DEKSTOP NAVIGATION */
+.nav-desktop {
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #2563eb;
+}
+
+/* LAYOUT WRAPPER */
+.content-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* HERO SECTION */
+.hero-section {
+    position: relative; /* Kunci rahasia: Bubble button diposisikan absolute di sini */
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 16px;
+    padding: 40px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    font-weight: bold;
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.hero-text h1 {
+    font-size: 28px;
+    color: #1e3a8a;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #2563eb;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.summary {
+    font-size: 14px;
+    color: #475569;
+    margin-bottom: 20px;
+}
+
+.btn-download {
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.btn-download:hover {
+    background-color: #1d4ed8;
+}
+
+/* SECTION COMMON STYLES */
+.section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.section-title {
+    font-size: 20px;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    border-left: 4px solid #2563eb;
+    padding-left: 12px;
+}
+
+/* TIMELINE STYLES */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timeline-item {
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 15px;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.timeline-item h3 {
+    font-size: 16px;
+    color: #334155;
+}
+
+.duration {
+    display: block;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-bottom: 8px;
+}
+
+/* KEAHLIAN TAG */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background-color: #f1f5f9;
+    color: #475569;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* BUBBLE BUTTON (MOBILE MENU) */
+.bubble-menu-btn {
+    display: none; /* Disembunyikan pada versi Desktop */
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #2563eb;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+    z-index: 200;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.2s;
+}
+
+.bubble-menu-btn:active {
+    transform: scale(0.9);
+}
+
+.bubble-menu-btn .bar {
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* Animasi Tombol Silang saat Aktif */
+.bubble-menu-btn.active .bar:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+.bubble-menu-btn.active .bar:nth-child(2) {
+    opacity: 0;
+}
+.bubble-menu-btn.active .bar:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* MOBILE NAV OVERLAY */
+.mobile-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(30, 58, 138, 0.95);
+    z-index: 150;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.mobile-links {
+    list-style: none;
+    text-align: center;
+}
+
+.mobile-links li {
+    margin: 25px 0;
+}
+
+.mobile-links a {
+    color: white;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+/* RESPONSIVE DESIGN (BREAKPOINT SMARTPHONE) */
+@media (max-width: 768px) {
+    .nav-desktop {
+        display: none; /* Sembunyikan navigasi atas desktop */
+    }
+
+    .bubble-menu-btn {
+        display: flex; /* Aktifkan tombol gelembung bulatan */
+    }
+
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 30px; /* Jarak aman agar tidak bertubrukan dengan bubble button */
+    }
+
+    .hero-text h1 {
+        font-size: 24px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+}
