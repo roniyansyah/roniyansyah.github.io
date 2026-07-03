@@ -1,0 +1,304 @@
+/* ==========================================
+   HEADER
+========================================== */
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.page-title{
+    flex:1;
+}
+
+.page-title h1{
+    font-size:24px;
+    color:var(--secondary);
+}
+
+.page-title p{
+    color:#777;
+    font-size:14px;
+    margin-top:4px;
+}
+
+/* ==========================================
+   SCREEN
+========================================== */
+
+.screen{
+    display:none;
+}
+
+.screen.active{
+    display:block;
+}
+
+/* ==========================================
+   SETTING
+========================================== */
+
+.setting-card{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.setting{
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+}
+
+.setting label{
+
+    font-weight:bold;
+    color:#444;
+
+}
+
+.setting-group{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+
+}
+
+.check-item{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:12px;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+}
+
+.check-item input{
+
+    width:18px;
+    height:18px;
+
+}
+
+.action-group{
+
+    display:grid;
+    gap:12px;
+
+    margin-top:30px;
+
+}
+
+/* ==========================================
+   GAME
+========================================== */
+
+.game-header{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+.info-box{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:15px;
+
+    text-align:center;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.info-box small{
+
+    display:block;
+
+    color:#777;
+
+    margin-bottom:5px;
+
+}
+
+.info-box strong{
+
+    font-size:22px;
+
+    color:var(--primary);
+
+}
+
+.question-card{
+
+    background:#fff;
+
+    border-radius:16px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.question{
+
+    font-size:42px;
+
+    font-weight:bold;
+
+    color:var(--secondary);
+
+}
+
+.answer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:15px;
+
+}
+
+.answer-btn{
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:26px;
+
+    font-weight:bold;
+
+    padding:20px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.answer-btn:hover{
+
+    opacity:.9;
+
+}
+
+.answer-btn:active{
+
+    transform:scale(.97);
+
+}
+
+.answer-btn.correct{
+
+    background:var(--success);
+
+}
+
+.answer-btn.wrong{
+
+    background:var(--danger);
+
+}
+
+/* ==========================================
+   RESULT
+========================================== */
+
+.result-card{
+
+    text-align:center;
+
+}
+
+.result-score{
+
+    font-size:70px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+    margin:25px 0;
+
+}
+
+.result-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.result-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:14px 18px;
+
+    border-radius:10px;
+
+    background:#f7f7f7;
+
+}
+
+.result-item strong{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(min-width:768px){
+
+    .container{
+
+        max-width:650px;
+
+    }
+
+    .answer-grid{
+
+        grid-template-columns:repeat(4,1fr);
+
+    }
+
+}
