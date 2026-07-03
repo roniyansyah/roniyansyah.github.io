@@ -440,14 +440,35 @@ a{ text-decoration:none; color:inherit; }
 
 /* Bagian yang Dapat Diklik (Summary) */
 .about-item__summary {
-  padding: 1.2rem;
+  padding: 1.2rem 3rem 1.2rem 1.2rem; /* Tambah padding kanan agar teks tidak menabrak panah */
   cursor: pointer;
   list-style: none; /* Menghilangkan panah bawaan browser */
   position: relative;
 }
 
+/* Menghilangkan panah bawaan Safari & Chrome */
 .about-item__summary::-webkit-details-marker {
-  display: none; /* Menghilangkan panah bawaan Safari */
+  display: none; 
+}
+.about-item__summary::marker {
+  display: none;
+}
+
+/* Membuat Tombol Panah Kustom yang Lebih Besar & Responsif */
+.about-item__summary::after {
+  content: '▶'; /* Menggunakan karakter panah */
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%); /* Menjaga panah selalu di tengah vertikal */
+  font-size: 1.3rem; /* Ukuran panah diperbesar */
+  color: #1a73e8;
+  transition: transform 0.3s ease;
+}
+
+/* Efek Putar Panah saat Details Terbuka */
+.about-item[open] .about-item__summary::after {
+  transform: translateY(-50%) rotate(90deg); /* Berputar ke bawah */
 }
 
 .about-item__title {
@@ -461,7 +482,7 @@ a{ text-decoration:none; color:inherit; }
   font-size: 0.95rem;
   line-height: 1.6;
   color: #555;
-  margin-right: 2rem;
+  margin-right: 1rem; /* Dikurangi agar lebih lega di HP */
 }
 
 /* Petunjuk Klik Kecil di Kanan Bawah Item */
@@ -471,6 +492,7 @@ a{ text-decoration:none; color:inherit; }
   color: #888;
   margin-top: 0.5rem;
   text-align: right;
+  margin-right: 1rem;
 }
 
 /* Konten Penjelasan yang Muncul Saat Diklik */
@@ -532,6 +554,48 @@ a{ text-decoration:none; color:inherit; }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   MEDIA QUERY UNTUK HP / LAYAR KECIL (Maksimal 768px)
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+  .about-content {
+    gap: 1rem; /* Jarak antar item sedikit dirapatkan di HP */
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-item__summary {
+    padding: 1rem 3rem 1rem 1rem; /* Padding disesuaikan agar hemat ruang */
+  }
+
+  .about-item__title {
+    font-size: 1.1rem; /* Ukuran font judul sedikit dikecilkan agar pas */
+  }
+
+  .about-item__desc {
+    font-size: 0.9rem; /* Ukuran deskripsi disesuaikan */
+    margin-right: 0; /* Habiskan sisa space kanan */
+  }
+
+  .about-item__summary::after {
+    font-size: 1.1rem; /* Ukuran panah disesuaikan agar tidak terlalu dominan di HP */
+    right: 1rem;
+  }
+
+  .about-item__details-content {
+    padding: 0 1rem 1rem 1rem;
+  }
+
+  .about-quote {
+    margin-top: 2rem;
+    padding: 1.2rem 1.2rem; /* Mengurangi padding quote agar teks tidak terlalu sempit */
+  }
+
+  .about-quote p {
+    font-size: 0.95rem; /* Ukuran font quote disesuaikan untuk HP */
   }
 }
 
