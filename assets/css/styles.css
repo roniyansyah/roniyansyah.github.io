@@ -623,3 +623,92 @@ a{ text-decoration:none; color:inherit; }
 @media (min-width: 720px){
   .cards{ grid-template-columns: repeat(3, 1fr); }
 }
+
+/*=============== SOCIAL LINKS ===============*/
+.social-links{
+    display: grid;
+    gap: .85rem;
+    margin-top: 1.5rem;
+}
+
+.social-link{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.social-link:hover{
+    border-color: var(--accent-current);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px -14px color-mix(in srgb, var(--accent-current) 60%, black 20%);
+}
+
+/* Ikon Media Sosial */
+.social-link > .fa-brands{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--accent-current) 15%, transparent);
+    color: var(--accent-current);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1.4rem;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+
+.social-link:hover > .fa-brands{
+    transform: scale(1.08);
+}
+
+/* Informasi */
+.social-link div{
+    flex: 1;
+}
+
+.social-link h4{
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: .2rem;
+}
+
+.social-link span{
+    font-size: .82rem;
+    color: var(--text-muted);
+}
+
+/* Ikon Panah */
+.social-link > .fa-solid{
+    color: var(--text-muted);
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.social-link:hover > .fa-solid{
+    color: var(--accent-current);
+    transform: translate(3px,-3px);
+}
+
+/* Responsive */
+@media (max-width:560px){
+
+    .social-link{
+        padding: .9rem 1rem;
+    }
+
+    .social-link > .fa-brands{
+        width: 42px;
+        height: 42px;
+        font-size: 1.2rem;
+    }
+
+}

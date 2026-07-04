@@ -1,0 +1,393 @@
+/* ==========================================
+   HEADER
+========================================== */
+
+.page-header{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.page-title{
+    flex:1;
+}
+
+.page-title h1{
+    font-size:24px;
+    color:var(--secondary);
+}
+
+.page-title p{
+    color:#666;
+    font-size:14px;
+    margin-top:4px;
+}
+
+/* ==========================================
+   SETTING
+========================================== */
+
+.setting-card{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.setting{
+
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+
+}
+
+.setting>label{
+
+    font-weight:bold;
+    color:#444;
+
+}
+
+.group-title{
+
+    margin-bottom:5px;
+
+    color:var(--secondary);
+
+}
+
+.checkbox-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+}
+
+.checkbox-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px;
+
+    background:#fff;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+}
+
+.checkbox-item input{
+
+    width:18px;
+    height:18px;
+
+}
+
+.action-group{
+
+    display:grid;
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+/* ==========================================
+   GAME HEADER
+========================================== */
+
+.game-header{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    margin-bottom:20px;
+
+}
+
+.info-box{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:14px;
+
+    text-align:center;
+
+    box-shadow:0 3px 10px rgba(0,0,0,.08);
+
+}
+
+.info-box small{
+
+    display:block;
+
+    color:#777;
+
+    margin-bottom:5px;
+
+}
+
+.info-box strong{
+
+    font-size:22px;
+
+    color:var(--primary);
+
+}
+
+/* ==========================================
+   MATCHING
+========================================== */
+
+.matching-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:15px;
+
+}
+
+.match-column{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.match-card{
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:16px;
+
+    min-height:64px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+
+    transition:.2s;
+
+}
+
+.match-card:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.match-card.selected{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.match-card.correct{
+
+    background:var(--success);
+
+    color:#fff;
+
+    pointer-events:none;
+
+}
+
+.match-card.wrong{
+
+    background:var(--danger);
+
+    color:#fff;
+
+}
+
+/* ==========================================
+   RESULT
+========================================== */
+
+.result-card{
+
+    text-align:center;
+
+}
+
+.result-score{
+
+    font-size:70px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+    margin:20px 0;
+
+}
+
+.result-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    margin-top:20px;
+
+}
+
+.result-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:14px 18px;
+
+    border-radius:10px;
+
+    background:#f6f6f6;
+
+}
+
+.result-item strong{
+
+    color:var(--primary);
+
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:600px){
+
+    .matching-container{
+
+        gap:10px;
+
+    }
+
+    .match-card{
+
+        font-size:20px;
+
+        padding:14px 10px;
+
+    }
+
+}
+
+/* ==========================================
+   TABLET
+========================================== */
+
+@media(min-width:768px){
+
+    .container{
+
+        max-width:700px;
+
+    }
+
+    .match-card{
+
+        font-size:28px;
+
+    }
+
+}
+
+/* ==========================================
+   MATH TYPOGRAPHY (SUP & SUB)
+========================================== */
+
+.match-card sup,
+.match-card sub {
+    font-size: 0.65em; /* Mengecilkan ukuran font agar proporsional dengan angka utama */
+    line-height: 0;    /* Mencegah tag ini merusak tinggi (height) dari kartu flexbox */
+    position: relative;
+    vertical-align: baseline;
+    font-weight: 600;  /* Sedikit ditebalkan agar tetap terbaca meski kecil */
+}
+
+.match-card sup {
+    top: -0.6em; /* Menyesuaikan tinggi posisi pangkat pecahan */
+}
+
+.match-card sub {
+    bottom: -0.25em; /* Menyesuaikan rendah posisi basis logaritma (misal angka 2 pada log2) */
+    margin-right: 2px; /* Memberi sedikit jarak antara basis logaritma dan angka utamanya */
+}
+
+/* Opsi Tambahan: Agar logaritma tidak terlalu mepet dengan tulisan "log" */
+.match-card sub + text, 
+.match-card {
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   MATERI
+========================================== */
+
+.materi-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.materi-item {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary);
+    box-shadow: 0 2px 5px rgba(0,0,0,.05);
+}
+
+.materi-item h3 {
+    margin: 0 0 5px 0;
+    color: var(--secondary);
+    font-size: 18px;
+}
+
+.materi-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.5;
+    font-size: 15px;
+}
